@@ -11,7 +11,7 @@ export const personalDetails = {
   ],
   bio: "Computer Science undergraduate at Staffordshire University (APIIT Sri Lanka). Experienced in Full Stack Web Development (React, NestJS, Node.js), Mobile App Development (Flutter, React Native), and UI/UX Design. Passionate about engineering scalable, user-centric digital solutions.",
   stats: [
-    { value: "2+", label: "Years Experience" },
+    { value: "2", label: "Experiences" },
     { value: "5+", label: "Real Projects" },
     { value: "100%", label: "Dedication" }
   ],
