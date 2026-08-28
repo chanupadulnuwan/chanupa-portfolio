@@ -1,9 +1,9 @@
 .hero-section {
   min-height: 100vh;
-  padding-top: 140px;
+  padding-top: calc(110px + 1.5in);
   padding-bottom: 80px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   overflow: hidden;
   background: radial-gradient(circle at 75% 45%, rgba(253, 111, 0, 0.08) 0%, transparent 60%);
