@@ -103,7 +103,7 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Right Column - Exact Figma 3D Pop-Out Avatar Effect */
+/* Right Column - 3D Pop-Out Avatar Effect */
 .hero-image-wrapper {
   position: relative;
   width: 440px;
@@ -114,13 +114,14 @@
   align-items: flex-end;
 }
 
-/* Dark Backdrop Circle - Centered around chest/torso */
-.hero-backdrop-circle {
+/* Dark Backdrop Circle */
+.hero-circle-bg {
   position: absolute;
   bottom: 0;
-  left: 30px;
-  width: 380px;
-  height: 380px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
   background: #1c1c1c;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -128,27 +129,41 @@
   z-index: 1;
 }
 
-/* Profile Photo Masked to let Head & Hair pop out above top curve */
-.hero-avatar-img-masked {
+/* Clipper: Top is open for head pop-out, bottom is rounded to keep legs inside circle */
+.hero-avatar-clipper {
   position: absolute;
   bottom: 0;
-  left: 10px;
-  width: 420px;
-  height: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 520px;
+  border-bottom-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+/* Larger Profile Image shifted UPWARDS so head pops out and legs sit inside circle */
+.hero-avatar-img {
+  width: 460px;
+  height: auto;
+  max-width: none;
   object-fit: contain;
   object-position: bottom center;
-  z-index: 2;
-  mask: url(#figma-popout-mask);
-  -webkit-mask: url(#figma-popout-mask);
+  transform: translateY(-25px);
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65));
 }
 
 .avatar-ambient-glow {
   position: absolute;
   bottom: 0;
-  left: 30px;
-  width: 380px;
-  height: 380px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(253, 111, 0, 0.22) 0%, transparent 70%);
   filter: blur(45px);
