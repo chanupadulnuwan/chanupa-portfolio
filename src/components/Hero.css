@@ -107,39 +107,39 @@
 .hero-image-wrapper {
   position: relative;
   width: 440px;
-  height: 520px;
+  height: 500px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-/* 2nd Circle: Grey Background Disc behind image (height = 400px) */
+/* 2nd Circle: Grey Background Disc behind image (360px x 360px) */
 .hero-circle-bg {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 400px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
   background: rgba(34, 34, 34, 0.85);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-/* 1st Circle: Front Masked Clipper Container (height = 520px) */
-/* Bottom rounded border (200px radius) aligns EXACTLY with 2nd Circle's bottom layer */
-/* Top is taller (520px) so head part pops out above 2nd circle */
+/* 1st Circle: Front Masked Clipper Container (height = 500px) */
+/* Bottom rounded border (180px radius = 360px / 2) aligns EXACTLY with 2nd Circle's bottom layer */
+/* Top is taller (500px) so head part pops out above 2nd circle */
 .hero-avatar-clipper {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 520px;
-  border-bottom-left-radius: 200px;
-  border-bottom-right-radius: 200px;
+  width: 360px;
+  height: 500px;
+  border-bottom-left-radius: 180px;
+  border-bottom-right-radius: 180px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -147,13 +147,14 @@
   z-index: 2;
 }
 
-/* Image inside 1st Circle Clipper */
+/* Image inside 1st Circle Clipper - Scaled large (580px wide) so head pops out ~75px above background circle */
 .hero-avatar-img {
-  width: 450px;
+  width: 580px;
   height: auto;
   max-width: none;
   object-fit: contain;
   object-position: bottom center;
+  transform: translateY(0);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
