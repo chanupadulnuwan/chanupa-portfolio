@@ -17,7 +17,7 @@
   --radius-md: 14px;
   --radius-lg: 24px;
   --radius-full: 9999px;
-  --max-width: 1240px;
+  --max-width: 1440px;
 }
 
 * {
@@ -63,7 +63,13 @@ button {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 1.5in;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
 }
 
 .section-padding {
