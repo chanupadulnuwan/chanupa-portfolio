@@ -103,7 +103,7 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Right Column - 2 Circles 3D Pop-Out Technique (Moved 1 inch UP) */
+/* Right Column - 2 Circles 3D Pop-Out Technique (Moved 1 inch UP and 1 inch RIGHT) */
 .hero-image-wrapper {
   position: relative;
   width: 540px;
@@ -112,7 +112,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  transform: translateY(-1in);
+  transform: translate(1in, -1in);
 }
 
 /* 2nd Circle: Grey Background Disc behind image (460px x 460px) */
