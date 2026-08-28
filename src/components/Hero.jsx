@@ -68,7 +68,7 @@ const Hero = ({ onOpenCV }) => {
               Hire Me
             </a>
             <SpecularButton
-              size="md"
+              size="sm"
               radius={10}
               tint="#FD6F00"
               tintOpacity={0.12}
