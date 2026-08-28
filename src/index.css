@@ -17,7 +17,7 @@
   --radius-md: 14px;
   --radius-lg: 24px;
   --radius-full: 9999px;
-  --max-width: 1440px;
+  --max-width: 100%;
 }
 
 * {
@@ -61,14 +61,21 @@ button {
 
 /* Layout Utilities */
 .container {
-  max-width: var(--max-width);
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 1.5in;
+  padding: 0 2in;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .container {
-    padding: 0 32px;
+    padding: 0 1in;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
   }
 }
 
