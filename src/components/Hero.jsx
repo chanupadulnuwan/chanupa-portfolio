@@ -9,6 +9,18 @@ import './Hero.css';
 const Hero = ({ onOpenCV }) => {
   return (
     <section id="home" className="hero-section">
+      {/* SVG Mask Definition for exact Figma 3D Pop-Out Head Effect */}
+      <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
+        <defs>
+          <mask id="figma-popout-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="440" height="520">
+            {/* Top area allows head and hair to pop out completely */}
+            <rect x="0" y="0" width="440" height="180" fill="white" />
+            {/* Bottom circle clips the lower body seamlessly inside the circle */}
+            <circle cx="220" cy="330" r="190" fill="white" />
+          </mask>
+        </defs>
+      </svg>
+
       <div className="container hero-container">
         {/* Left Column - Content */}
         <div className="hero-content">
@@ -86,16 +98,14 @@ const Hero = ({ onOpenCV }) => {
           </div>
         </div>
 
-        {/* Right Column - 3D Pop-out Profile Image */}
+        {/* Right Column - Exact Figma 3D Pop-Out Avatar */}
         <div className="hero-image-wrapper">
           <div className="hero-backdrop-circle" />
-          <div className="hero-avatar-clipper">
-            <img
-              src={meImg}
-              alt="Chanupa Dulnuwan Profile Photo"
-              className="hero-avatar-img"
-            />
-          </div>
+          <img
+            src={meImg}
+            alt="Chanupa Dulnuwan Profile Photo"
+            className="hero-avatar-img-masked"
+          />
           <div className="avatar-ambient-glow" />
         </div>
       </div>

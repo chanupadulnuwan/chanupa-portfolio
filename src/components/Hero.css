@@ -103,22 +103,24 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Right Column - Pronounced 3D Pop-Out Avatar Effect */
+/* Right Column - Exact Figma 3D Pop-Out Avatar Effect */
 .hero-image-wrapper {
   position: relative;
+  width: 440px;
+  height: 520px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 400px;
-  height: 480px;
-  margin: 0 auto;
 }
 
+/* Dark Backdrop Circle - Centered around chest/torso */
 .hero-backdrop-circle {
   position: absolute;
   bottom: 0;
-  width: 350px;
-  height: 350px;
+  left: 30px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
   background: #1c1c1c;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -126,38 +128,30 @@
   z-index: 1;
 }
 
-.hero-avatar-clipper {
+/* Profile Photo Masked to let Head & Hair pop out above top curve */
+.hero-avatar-img-masked {
   position: absolute;
   bottom: 0;
-  width: 350px;
-  height: 480px;
-  border-bottom-left-radius: 175px;
-  border-bottom-right-radius: 175px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 2;
-}
-
-.hero-avatar-img {
-  width: 410px;
-  height: auto;
-  max-width: none;
+  left: 10px;
+  width: 420px;
+  height: 500px;
   object-fit: contain;
   object-position: bottom center;
-  transform: translateY(15px);
-  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.7));
+  z-index: 2;
+  mask: url(#figma-popout-mask);
+  -webkit-mask: url(#figma-popout-mask);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65));
 }
 
 .avatar-ambient-glow {
   position: absolute;
   bottom: 0;
-  width: 350px;
-  height: 350px;
+  left: 30px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(253, 111, 0, 0.22) 0%, transparent 70%);
-  filter: blur(40px);
+  filter: blur(45px);
   z-index: 0;
 }
 
@@ -174,25 +168,9 @@
   }
 
   .hero-image-wrapper {
-    width: 360px;
-    height: 420px;
-  }
-
-  .hero-backdrop-circle,
-  .avatar-ambient-glow {
-    width: 340px;
-    height: 340px;
-  }
-
-  .hero-avatar-clipper {
-    width: 340px;
-    height: 420px;
-    border-bottom-left-radius: 170px;
-    border-bottom-right-radius: 170px;
-  }
-
-  .hero-avatar-img {
-    width: 360px;
+    transform: scale(0.85);
+    transform-origin: bottom center;
+    margin-bottom: -40px;
   }
 }
 
@@ -230,24 +208,8 @@
   }
 
   .hero-image-wrapper {
-    width: 290px;
-    height: 340px;
-  }
-
-  .hero-backdrop-circle,
-  .avatar-ambient-glow {
-    width: 280px;
-    height: 280px;
-  }
-
-  .hero-avatar-clipper {
-    width: 280px;
-    height: 340px;
-    border-bottom-left-radius: 140px;
-    border-bottom-right-radius: 140px;
-  }
-
-  .hero-avatar-img {
-    width: 295px;
+    transform: scale(0.7);
+    transform-origin: bottom center;
+    margin-bottom: -70px;
   }
 }
