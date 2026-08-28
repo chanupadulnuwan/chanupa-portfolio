@@ -86,9 +86,10 @@ const Hero = ({ onOpenCV }) => {
           </div>
         </div>
 
-        {/* Right Column - Profile Image Circle */}
+        {/* Right Column - 3D Pop-out Profile Image */}
         <div className="hero-image-wrapper">
-          <div className="hero-avatar-circle">
+          <div className="hero-backdrop-circle" />
+          <div className="hero-avatar-clipper">
             <img
               src={meImg}
               alt="Chanupa Dulnuwan Profile Photo"
