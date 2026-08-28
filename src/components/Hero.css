@@ -103,7 +103,7 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Right Column - 3D Pop-Out Avatar Effect */
+/* Right Column - 2 Circles 3D Pop-Out Technique */
 .hero-image-wrapper {
   position: relative;
   width: 440px;
@@ -114,7 +114,7 @@
   align-items: flex-end;
 }
 
-/* Dark Backdrop Circle */
+/* 2nd Circle: Grey Background Disc behind image (height = 400px) */
 .hero-circle-bg {
   position: absolute;
   bottom: 0;
@@ -123,13 +123,14 @@
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: #1c1c1c;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  background: rgba(34, 34, 34, 0.85);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-/* Clipper: Top is open for head pop-out, bottom is rounded to keep legs inside circle */
+/* 1st Circle: Front Masked Clipper Container (height = 520px) */
+/* Bottom rounded border (200px radius) aligns EXACTLY with 2nd Circle's bottom layer */
+/* Top is taller (520px) so head part pops out above 2nd circle */
 .hero-avatar-clipper {
   position: absolute;
   bottom: 0;
@@ -146,28 +147,14 @@
   z-index: 2;
 }
 
-/* Larger Profile Image shifted UPWARDS so head pops out and legs sit inside circle */
+/* Image inside 1st Circle Clipper */
 .hero-avatar-img {
-  width: 460px;
+  width: 450px;
   height: auto;
   max-width: none;
   object-fit: contain;
   object-position: bottom center;
-  transform: translateY(-25px);
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65));
-}
-
-.avatar-ambient-glow {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(253, 111, 0, 0.22) 0%, transparent 70%);
-  filter: blur(45px);
-  z-index: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
 /* Responsive Breakpoints */

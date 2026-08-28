@@ -86,9 +86,12 @@ const Hero = ({ onOpenCV }) => {
           </div>
         </div>
 
-        {/* Right Column - 3D Pop-Out Avatar (Head Out at Top, Bottom inside Circle) */}
+        {/* Right Column - 3D Pop-Out Avatar Effect (2 Circles technique) */}
         <div className="hero-image-wrapper">
+          {/* 2nd Circle: Background Grey Circle with reduced opacity */}
           <div className="hero-circle-bg" />
+
+          {/* 1st Circle: Masked Image Clipper (bottom matches 2nd circle, top extends higher for head pop-out) */}
           <div className="hero-avatar-clipper">
             <img
               src={meImg}
@@ -96,7 +99,6 @@ const Hero = ({ onOpenCV }) => {
               className="hero-avatar-img"
             />
           </div>
-          <div className="avatar-ambient-glow" />
         </div>
       </div>
     </section>
