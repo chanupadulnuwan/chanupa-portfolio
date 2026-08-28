@@ -17,7 +17,7 @@ const Navbar = () => {
       }
 
       // Dynamic section active indicator
-      const sections = ['home', 'about', 'projects', 'contact'];
+      const sections = ['home', 'about', 'projects', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -41,6 +41,7 @@ const Navbar = () => {
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'About Me', href: '#about', id: 'about' },
     { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Achievements', href: '#achievements', id: 'achievements' },
     { name: 'Contact Me', href: '#contact', id: 'contact' },
   ];
 

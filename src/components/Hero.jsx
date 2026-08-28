@@ -2,6 +2,7 @@ import React from 'react';
 import { Download } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon, MailIcon, GithubIcon } from './SocialIcons';
 import TypingText from './TypingText';
+import SpecularButton from './SpecularButton';
 import { personalDetails } from '../data/portfolioData';
 import meImg from '../../Images/me.png';
 import './Hero.css';
@@ -66,10 +67,27 @@ const Hero = ({ onOpenCV }) => {
             <a href="#contact" className="btn-primary">
               Hire Me
             </a>
-            <button onClick={onOpenCV} className="btn-outline">
+            <SpecularButton
+              size="md"
+              radius={10}
+              tint="#FD6F00"
+              tintOpacity={0.12}
+              blur={6}
+              textColor="#ffffff"
+              lineColor="#FD6F00"
+              baseColor="#444444"
+              intensity={1.2}
+              shineSize={14}
+              shineFade={45}
+              thickness={1.5}
+              speed={0.4}
+              followMouse
+              proximity={250}
+              onClick={onOpenCV}
+            >
               <Download size={18} />
               Download CV
-            </button>
+            </SpecularButton>
           </div>
 
           {/* Stats Bar Component */}

@@ -112,7 +112,7 @@ const About = () => {
         </div>
 
         {/* Achievements Section */}
-        <div className="achievements-container">
+        <div id="achievements" className="achievements-container">
           <h3 className="timeline-title">Honors & Achievements</h3>
           <div className="achievements-grid">
             {achievements.map((ach, idx) => (
