@@ -1,0 +1,210 @@
+/* Reset & Design System */
+:root {
+  --color-bg: #0d0d0d;
+  --color-bg-alt: #161616;
+  --color-card: #1c1c1c;
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-primary: #FD6F00;
+  --color-primary-hover: #e06200;
+  --color-primary-glow: rgba(253, 111, 0, 0.25);
+  --color-text-main: #ffffff;
+  --color-text-muted: #9c9c9c;
+  --color-text-subtle: #666666;
+  --font-main: "SF Pro Rounded", "SF Rounded", -apple-system, BlinkMacSystemFont, "Nunito", sans-serif;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --max-width: 1240px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utility */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+/* Section Header Component */
+.section-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 60px;
+}
+
+.section-subtitle {
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  color: var(--color-text-muted);
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 30px;
+  }
+}
+
+/* Button Component Styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px var(--color-primary-glow);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(253, 111, 0, 0.4);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--color-card-border);
+  color: var(--color-text-main);
+  background: var(--color-card);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Social Icon Button Styling */
+.social-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  transition: var(--transition-normal);
+  background: transparent;
+}
+
+.social-icon-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 0 15px var(--color-primary-glow);
+  transform: translateY(-3px);
+}
+
+/* Typing Cursor Effect */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: var(--color-primary);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
