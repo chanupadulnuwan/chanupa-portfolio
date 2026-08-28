@@ -73,7 +73,7 @@ const Hero = ({ onOpenCV }) => {
               tint="#FD6F00"
               tintOpacity={0.12}
               blur={6}
-              textColor="#ffffff"
+              textColor="#FD6F00"
               lineColor="#FD6F00"
               baseColor="#444444"
               intensity={1.2}
