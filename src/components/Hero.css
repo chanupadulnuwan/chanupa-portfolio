@@ -103,43 +103,43 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Right Column - 2 Circles 3D Pop-Out Technique */
+/* Right Column - 2 Circles 3D Pop-Out Technique (Scaled up) */
 .hero-image-wrapper {
   position: relative;
-  width: 440px;
-  height: 500px;
+  width: 500px;
+  height: 580px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-/* 2nd Circle: Grey Background Disc behind image (360px x 360px) */
+/* 2nd Circle: Grey Background Disc behind image (420px x 420px) */
 .hero-circle-bg {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;
-  height: 360px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   background: rgba(34, 34, 34, 0.85);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-/* 1st Circle: Front Masked Clipper Container (height = 500px) */
-/* Bottom rounded border (180px radius = 360px / 2) aligns EXACTLY with 2nd Circle's bottom layer */
-/* Top is taller (500px) so head part pops out above 2nd circle */
+/* 1st Circle: Front Masked Clipper Container (height = 580px) */
+/* Bottom rounded border (210px radius = 420px / 2) aligns EXACTLY with 2nd Circle's bottom layer */
+/* Top is taller (580px) so head part pops out above 2nd circle */
 .hero-avatar-clipper {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;
-  height: 500px;
-  border-bottom-left-radius: 180px;
-  border-bottom-right-radius: 180px;
+  width: 420px;
+  height: 580px;
+  border-bottom-left-radius: 210px;
+  border-bottom-right-radius: 210px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -147,9 +147,9 @@
   z-index: 2;
 }
 
-/* Image inside 1st Circle Clipper - Scaled large (580px wide) so head pops out ~75px above background circle */
+/* Image inside 1st Circle Clipper - Scaled up (675px wide) so head pops out ~90px above background circle */
 .hero-avatar-img {
-  width: 580px;
+  width: 675px;
   height: auto;
   max-width: none;
   object-fit: contain;
