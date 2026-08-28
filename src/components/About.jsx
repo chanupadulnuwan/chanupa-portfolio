@@ -78,34 +78,12 @@ const About = () => {
           })}
         </div>
 
-        {/* Education & Experience Dual Columns */}
-        <div className="edu-exp-grid">
-          {/* Education Column */}
-          <div className="edu-column">
-            <div className="column-header">
-              <GraduationCap size={26} color="#FD6F00" />
-              <h3>Education</h3>
-            </div>
-            <div className="timeline">
-              {education.map((edu, idx) => (
-                <div key={idx} className="timeline-item">
-                  <div className="timeline-dot" />
-                  <div className="timeline-content">
-                    <span className="timeline-period">{edu.period}</span>
-                    <h4>{edu.degree}</h4>
-                    <span className="timeline-company">{edu.institution}</span>
-                    <p>{edu.details}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Work Experience Column */}
+        {/* Work Experience & Certification Section */}
+        <div className="work-exp-container">
           <div className="exp-column">
             <div className="column-header">
               <Briefcase size={26} color="#FD6F00" />
-              <h3>Work Experience</h3>
+              <h3>Work Experience & Certification</h3>
             </div>
             <div className="timeline">
               {experienceTimeline.map((exp, idx) => (
