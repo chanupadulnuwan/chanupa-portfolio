@@ -126,6 +126,29 @@
   transform: translate(1.5in, 0);
 }
 
+/* Curved Tourney Text along Left Side of Avatar Circle */
+.hero-curved-text-svg {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  height: 520px;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.curved-text {
+  font-family: 'Tourney', cursive, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  fill: #ffffff;
+  letter-spacing: 5px;
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+}
+
 /* 2nd Circle: Grey Background Disc behind image (460px x 460px) */
 .hero-circle-bg {
   position: absolute;
