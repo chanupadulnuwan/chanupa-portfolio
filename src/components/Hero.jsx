@@ -3,6 +3,7 @@ import { Download } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon, MailIcon, GithubIcon } from './SocialIcons';
 import TypingText from './TypingText';
 import SpecularButton from './SpecularButton';
+import HeroBackgroundAnimation from './HeroBackgroundAnimation';
 import { personalDetails } from '../data/portfolioData';
 import meImg from '../../Images/me.png';
 import './Hero.css';
@@ -10,8 +11,8 @@ import './Hero.css';
 const Hero = ({ onOpenCV }) => {
   return (
     <section id="home" className="hero-section">
-      {/* Ambient Matrix Glow Background */}
-      <div className="hero-bg-acid" />
+      {/* Dynamic Animated Matrix Canvas & Subtle Right Orange Touch */}
+      <HeroBackgroundAnimation />
 
       <div className="container hero-container">
         {/* Left Column - Content */}

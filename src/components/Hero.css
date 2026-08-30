@@ -6,7 +6,7 @@
   align-items: flex-start;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 75% 45%, rgba(253, 111, 0, 0.08) 0%, transparent 60%);
+  background-color: #0d0d0d;
 }
 
 .hero-bg-acid {
