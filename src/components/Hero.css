@@ -178,10 +178,10 @@
 
 .curved-text {
   font-family: 'Tourney', cursive, sans-serif;
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 700;
   fill: #ffffff;
-  letter-spacing: 10px;
+  letter-spacing: 6px;
   opacity: 0.94;
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.85));
 }
@@ -217,14 +217,14 @@
   z-index: 2;
 }
 
-/* Image inside 1st Circle Clipper - Scaled up (740px wide) so head pops out ~95px above background circle */
+/* Image inside 1st Circle Clipper - Perfectly Centered */
 .hero-avatar-img {
   width: 740px;
   height: auto;
   max-width: none;
   object-fit: contain;
   object-position: bottom center;
-  transform: translateX(-2cm);
+  transform: translateX(0);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
