@@ -11,6 +11,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Global Client Error Diagnostics -->
+    <script>
+      window.addEventListener('error', function(e) {
+        var errDiv = document.getElementById('debug-error-banner');
+        if (!errDiv) {
+          errDiv = document.createElement('div');
+          errDiv.id = 'debug-error-banner';
+          errDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#990000;color:#fff;padding:16px;font-family:sans-serif;font-size:14px;word-break:break-all;box-shadow:0 4px 20px rgba(0,0,0,0.8);';
+          document.body.appendChild(errDiv);
+        }
+        errDiv.innerHTML = '<strong>Runtime Error:</strong> ' + (e.message || e.error || 'Unknown error') + ' at ' + (e.filename || '') + ':' + (e.lineno || '');
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        var errDiv = document.getElementById('debug-error-banner');
+        if (!errDiv) {
+          errDiv = document.createElement('div');
+          errDiv.id = 'debug-error-banner';
+          errDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#990000;color:#fff;padding:16px;font-family:sans-serif;font-size:14px;word-break:break-all;box-shadow:0 4px 20px rgba(0,0,0,0.8);';
+          document.body.appendChild(errDiv);
+        }
+        errDiv.innerHTML = '<strong>Unhandled Promise Rejection:</strong> ' + (e.reason ? (e.reason.message || e.reason) : 'Unknown rejection');
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
