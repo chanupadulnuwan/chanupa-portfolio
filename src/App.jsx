@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import AboutMePage from './components/AboutMePage';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -76,7 +77,6 @@ function App() {
           <div style={{ paddingTop: '100px' }}>
             <Projects
               viewMode="all"
-              onExploreTop={() => setProjectsViewMode('top')}
               onExploreAll={navigateToProjects}
               isDedicatedPage={true}
               onBackToHome={navigateToHome}
@@ -85,6 +85,7 @@ function App() {
         ) : (
           <>
             <Hero onOpenCV={() => setIsCVModalOpen(true)} />
+            <About onOpenFullAbout={navigateToFullAbout} />
             <Projects
               viewMode="top"
               onExploreAll={navigateToProjects}
