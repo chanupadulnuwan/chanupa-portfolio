@@ -1,5 +1,6 @@
 .projects-section {
-  background-color: var(--color-bg-alt);
+  background-color: #0d0d0d;
+  background-image: radial-gradient(circle at 50% 0%, rgba(253, 111, 0, 0.07) 0%, rgba(253, 111, 0, 0.025) 35%, transparent 65%);
   position: relative;
 }
 
