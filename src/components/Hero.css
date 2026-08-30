@@ -166,7 +166,7 @@
 /* Curved Tourney Text along Top of Avatar Circle */
 .hero-curved-text-svg {
   position: absolute;
-  bottom: -20px;
+  bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
   width: 580px;

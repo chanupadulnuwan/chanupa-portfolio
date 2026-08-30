@@ -102,11 +102,11 @@ const Hero = ({ onOpenCV }) => {
 
         {/* Right Column - Avatar Image */}
         <div className="hero-image-wrapper">
-          {/* Curved Text Above Circle Header */}
+          {/* Curved Text Along Left Edge of Avatar Circle */}
           <svg className="hero-curved-text-svg" viewBox="0 0 580 580">
-            <path id="curvePath" d="M 50, 290 A 240,240 0 0,1 530,290" fill="none" />
+            <path id="leftCurvePath" d="M 85, 430 A 235,235 0 0,1 265,65" fill="none" />
             <text className="curved-text">
-              <textPath href="#curvePath" startOffset="50%" textAnchor="middle">
+              <textPath href="#leftCurvePath" startOffset="0%">
                 Seek Higher Things
               </textPath>
             </text>
