@@ -10,8 +10,8 @@ import CVModal from './components/CVModal';
 
 function App() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home' or 'about-me'
-  const [projectsViewMode, setProjectsViewMode] = useState('top'); // 'top' or 'all'
+  const [currentView, setCurrentView] = useState('home');
+  const [projectsViewMode, setProjectsViewMode] = useState('top');
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -52,15 +52,6 @@ function App() {
     }, 100);
   };
 
-  if (currentView === 'about-me') {
-    return (
-      <div className="portfolio-app">
-        <AboutMePage onBackToHome={navigateToHome} />
-        <Footer />
-      </div>
-    );
-  }
-
   return (
     <div className="portfolio-app">
       <Navbar
@@ -68,13 +59,19 @@ function App() {
         onAboutClick={navigateToFullAbout}
       />
       <main>
-        <Hero onOpenCV={() => setIsCVModalOpen(true)} />
-        <About onOpenFullAbout={navigateToFullAbout} />
-        <Projects
-          viewMode={projectsViewMode}
-          setViewMode={setProjectsViewMode}
-        />
-        <Contact />
+        {currentView === 'about-me' ? (
+          <AboutMePage onBackToHome={navigateToHome} />
+        ) : (
+          <>
+            <Hero onOpenCV={() => setIsCVModalOpen(true)} />
+            <About onOpenFullAbout={navigateToFullAbout} />
+            <Projects
+              viewMode={projectsViewMode}
+              setViewMode={setProjectsViewMode}
+            />
+            <Contact />
+          </>
+        )}
       </main>
       <Footer />
       <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
