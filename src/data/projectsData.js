@@ -272,7 +272,7 @@ export const fullProjectsData = [
     role: "Desktop Software Engineer & Database Architect",
     teamMembers: ["Gayantha Akash", "Hemsadi Perera", "Amien Sainudeen"],
     coverImage: invImage,
-    gallery: [invImage, uiMockup, nestleExtra1],
+    gallery: [invImage, uiMockup],
     tech: ["C#", ".NET 8", "WinForms", "MySQL", "OOP Architecture", "MVC Pattern"],
     githubLinks: [{ label: "GitHub C# Repo", url: "https://github.com/chanupadulnuwan/inventory_management_system" }],
     videoIframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463624105397805056?compact=1" height="400" width="100%" frameborder="0" allowfullscreen="" title="Inventory System Showcase"></iframe>`,
