@@ -17,8 +17,6 @@ import nestle2 from '../../Images/Projects/Nestle Insight/1782147907980.jpeg';
 import nestle3 from '../../Images/Projects/Nestle Insight/1782147907881.jpeg';
 import nestle4 from '../../Images/Projects/Nestle Insight/1782147910236.jpeg';
 import nestle5 from '../../Images/Projects/Nestle Insight/1782147912047.jpeg';
-import nestleExtra1 from '../../Images/Projects/Nestle Insight/1782147905117.jpeg';
-import nestleExtra2 from '../../Images/Projects/Nestle Insight/1782147907531.jpeg';
 
 // PayPatch Web APP
 import paypatchWeb1 from '../../Images/Projects/PayPatch Web APP/Screenshot 2026-08-31 002853.png';
@@ -44,6 +42,20 @@ import some2 from '../../Images/Projects/Sōmē AI ECO System _ Designing Projec
 import some3 from '../../Images/Projects/Sōmē AI ECO System _ Designing Project/Screenshot 2026-08-30 234344.png';
 import some4 from '../../Images/Projects/Sōmē AI ECO System _ Designing Project/Screenshot 2026-08-30 234400.png';
 import some5 from '../../Images/Projects/Sōmē AI ECO System _ Designing Project/Screenshot 2026-08-30 234437.png';
+
+// Inventory Management System Updated Image
+import invImage from '../../Images/Projects/Inventory Management System/images.jpeg';
+
+// Fort Library Digitalizing Project Images
+import fortLib1 from '../../Images/Projects/Fort Library Digitalizing Project/1782062883064.jpeg';
+import fortLib2 from '../../Images/Projects/Fort Library Digitalizing Project/1782062884895.jpeg';
+import fortLib3 from '../../Images/Projects/Fort Library Digitalizing Project/1782062886153.jpeg';
+import fortLib4 from '../../Images/Projects/Fort Library Digitalizing Project/1782062887776.jpeg';
+
+// Wizardly Math Images
+import wizardMath1 from '../../Images/Projects/Wizardly Math/Screenshot 2026-08-31 010605.png';
+import wizardMath2 from '../../Images/Projects/Wizardly Math/Screenshot 2026-08-31 010629.png';
+import wizardMath3 from '../../Images/Projects/Wizardly Math/Screenshot 2026-08-31 010641.png';
 
 export const fullProjectsData = [
   {
@@ -138,6 +150,60 @@ export const fullProjectsData = [
     ]
   },
   {
+    id: "fort-library-digitalization",
+    title: "Fort Library Digitalization Project – Galle Fort Library",
+    subtitle: "Preserving Sri Lanka’s Oldest Public Library Through Digital Cataloging",
+    category: "Full Stack",
+    status: "Ongoing",
+    isTopProject: false,
+    year: "2026",
+    role: "Permanent Project Member, System Data Engineer & Digitizer",
+    teamMembers: ["Gagana Tharupathi (Inviting Collaborator)", "Galle Fort Library Staff & Club Members", "University of Ruhuna Student Volunteers"],
+    coverImage: fortLib1,
+    gallery: [fortLib1, fortLib2, fortLib3, fortLib4],
+    tech: ["Digital Cataloging Systems", "Database Management", "Data Structuring", "Historical Preservation", "Software Tools"],
+    shortDesc: "Historic digitalization project for Galle Fort Library—Sri Lanka's oldest public library. Digitized over 4,000 rare historical books to date.",
+    story: [
+      "Proud and honored to contribute to the digitalization project of the Galle Fort Library, widely recognized as Sri Lanka’s oldest public library.",
+      "Located inside the historic UNESCO World Heritage Galle Fort, this library holds a priceless collection of rare historical books and manuscripts. Being part of this initiative is deeply meaningful because it is not just about data entry — it is about preserving knowledge, history, and cultural heritage for future generations through technology.",
+      "The initiative began through the librarian, staff, and library club members who reached out to the University of Ruhuna for technical support. After joining as a volunteer student contributor in July 2026 (invited by my friend Gagana Tharupathi), I was appointed as a permanent project member.",
+      "To date, our team has successfully digitized and cataloged over 4,000 rare books, with approximately 2,000 remaining. I am immensely grateful to be part of preserving our nation's heritage through technology."
+    ],
+    features: [
+      "Digital Archival System: Structuring metadata, ISBNs, authors, and conditions for historical rare books.",
+      "Over 4,000 Books Cataloged: Active ongoing digitalization progress toward complete 6,000+ volume preservation.",
+      "Institutional Collaboration: Joint project between Galle Fort Library and University of Ruhuna volunteers.",
+      "Permanent Project Appointment: Hired as a permanent project member to maintain database integrity."
+    ]
+  },
+  {
+    id: "wizardly-math",
+    title: "Wizardly Math – Educational Mobile Application",
+    subtitle: "Native Android Math Game Designed for Children's Educational Learning",
+    category: "Mobile App",
+    status: "Completed",
+    isTopProject: false,
+    year: "2024",
+    role: "Android Developer & UI Designer",
+    teamMembers: ["Chanupa Dulnuwan (Solo Developer)"],
+    coverImage: wizardMath1,
+    gallery: [wizardMath1, wizardMath2, wizardMath3],
+    tech: ["Android Studio", "Java", "Android SDK", "Mobile UI Design", "Game Logic"],
+    shortDesc: "Educational Android mobile math game created in 2024 using Java and Android Studio, designed to help kids learn math through play.",
+    story: [
+      "Wizardly Math is an educational mobile application I designed and developed back in 2024 during my early mobile development studies at Horizon Campus.",
+      "Built natively using Android Studio, Java, and Android SDK, the application provides an interactive, fun gaming environment for children to practice basic arithmetic, numbers, and math puzzles.",
+      "I crafted colorful UI components, custom game logic loops, score tracking, and immediate visual feedback to make math learning engaging and accessible for kids.",
+      "This project was a foundational step in my mobile application development journey, helping me master Java programming, activity lifecycles, and native Android UI layouts."
+    ],
+    features: [
+      "Native Java & Android SDK: Engineered natively in Android Studio for smooth performance.",
+      "Kid-Friendly UI Design: Bright, interactive visual themes tailored for young learners.",
+      "Interactive Arithmetic Puzzles: Dynamic math question generators with instant score feedback.",
+      "Offline Playability: Works seamlessly offline without requiring an internet connection."
+    ]
+  },
+  {
     id: "some-ai-ecosystem",
     title: "Sōmē AI ECO System – Designathon 2026 Runner Up",
     subtitle: "Emotionally Intelligent & Context-Aware Digital Life Companion",
@@ -205,8 +271,8 @@ export const fullProjectsData = [
     year: "2024",
     role: "Desktop Software Engineer & Database Architect",
     teamMembers: ["Gayantha Akash", "Hemsadi Perera", "Amien Sainudeen"],
-    coverImage: uiMockup,
-    gallery: [uiMockup, nestleExtra1, nestleExtra2],
+    coverImage: invImage,
+    gallery: [invImage, uiMockup, nestleExtra1],
     tech: ["C#", ".NET 8", "WinForms", "MySQL", "OOP Architecture", "MVC Pattern"],
     githubLinks: [{ label: "GitHub C# Repo", url: "https://github.com/chanupadulnuwan/inventory_management_system" }],
     videoIframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463624105397805056?compact=1" height="400" width="100%" frameborder="0" allowfullscreen="" title="Inventory System Showcase"></iframe>`,

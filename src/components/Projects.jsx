@@ -125,10 +125,10 @@ const Projects = ({ onOpenAllProjects }) => {
           ))}
         </div>
 
-        {/* Explore All 7 Projects Button */}
+        {/* Explore All 9 Projects Button */}
         <div className="explore-all-projects-wrapper">
           <button className="btn-primary explore-all-btn" onClick={onOpenAllProjects}>
-            <span>Explore All 7 Projects & Case Studies</span>
+            <span>Explore All 9 Projects & Case Studies</span>
             <ArrowRight size={18} />
           </button>
         </div>

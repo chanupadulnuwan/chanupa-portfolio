@@ -56,7 +56,7 @@ const AllProjectsPage = ({ onBackToHome }) => {
             <span>Back to Main Portfolio</span>
           </button>
           <div className="all-projects-title-badge">
-            <span>7 Real Projects Showcase</span>
+            <span>9 Real Projects Showcase</span>
           </div>
         </div>
       </header>
