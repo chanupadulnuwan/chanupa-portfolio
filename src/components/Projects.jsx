@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
-import { ExternalLink, ArrowRight, Eye, CheckCircle2, Clock } from 'lucide-react';
+import { ExternalLink, ArrowRight, Eye, CheckCircle2, Clock, Layers } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import { fullProjectsData } from '../data/projectsData';
 import ProjectDetailModal from './ProjectDetailModal';
 import './Projects.css';
 
-const Projects = ({ onOpenAllProjects }) => {
+const Projects = ({ viewMode = 'top', setViewMode }) => {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeStatus, setActiveStatus] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Filter strictly for the 3 Top Projects for Homepage view
-  const topProjects = fullProjectsData.filter((p) => p.isTopProject);
+  const categories = ['All', 'Full Stack', 'Mobile App', 'Web App', 'UI/UX Design', 'Desktop App'];
+  const statuses = ['All', 'Completed', 'Ongoing'];
+
+  // Filter projects depending on viewMode (top vs all) and active category/status filters
+  const displayedProjects = fullProjectsData.filter((project) => {
+    if (viewMode === 'top') {
+      return project.isTopProject;
+    }
+    const matchesCategory = activeCategory === 'All' || project.category === activeCategory;
+    const matchesStatus = activeStatus === 'All' || project.status === activeStatus;
+    return matchesCategory && matchesStatus;
+  });
 
   const openProjectDetails = (proj) => {
     setSelectedProject(proj);
@@ -20,16 +32,76 @@ const Projects = ({ onOpenAllProjects }) => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">Featured Highlights</span>
-          <h2 className="section-title">Top Projects</h2>
+          <span className="section-subtitle">
+            {viewMode === 'top' ? 'Featured Highlights' : 'Full Work Portfolio'}
+          </span>
+          <h2 className="section-title">
+            {viewMode === 'top' ? 'Top Projects' : 'All Projects & Case Studies'}
+          </h2>
           <p className="section-desc">
-            A curated selection of my primary commercial, mobile, and web engineering achievements.
+            {viewMode === 'top'
+              ? 'A curated selection of my primary commercial, mobile, and web engineering achievements.'
+              : 'Explore my complete collection of 9 real projects, featuring in-depth development stories, technical breakdowns, live links, and GitHub repositories.'}
           </p>
         </div>
 
-        {/* Top 3 Projects Grid */}
+        {/* View Mode Switcher Pills */}
+        <div className="view-mode-switcher">
+          <button
+            className={`mode-toggle-btn ${viewMode === 'top' ? 'active' : ''}`}
+            onClick={() => setViewMode('top')}
+          >
+            <span>Top Projects (3)</span>
+          </button>
+          <button
+            className={`mode-toggle-btn ${viewMode === 'all' ? 'active' : ''}`}
+            onClick={() => setViewMode('all')}
+          >
+            <Layers size={15} />
+            <span>All Projects ({fullProjectsData.length})</span>
+          </button>
+        </div>
+
+        {/* Filters Bar (Only shown when viewMode is 'all') */}
+        {viewMode === 'all' && (
+          <div className="projects-filters-wrapper">
+            <div className="filter-group">
+              <span className="filter-label">Category:</span>
+              <div className="filter-pills">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    className={`all-filter-pill ${activeCategory === cat ? 'active' : ''}`}
+                    onClick={() => setActiveCategory(cat)}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="filter-group">
+              <span className="filter-label">Status:</span>
+              <div className="filter-pills">
+                {statuses.map((st) => (
+                  <button
+                    key={st}
+                    className={`status-filter-pill ${activeStatus === st ? 'active' : ''} ${st.toLowerCase()}`}
+                    onClick={() => setActiveStatus(st)}
+                  >
+                    {st === 'Completed' && <CheckCircle2 size={13} />}
+                    {st === 'Ongoing' && <Clock size={13} />}
+                    <span>{st}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Projects Cards Grid */}
         <div className="projects-grid">
-          {topProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <div
               key={project.id}
               className="project-card"
@@ -125,12 +197,18 @@ const Projects = ({ onOpenAllProjects }) => {
           ))}
         </div>
 
-        {/* Explore All 9 Projects Button */}
+        {/* Bottom Toggle Action Button */}
         <div className="explore-all-projects-wrapper">
-          <button className="btn-primary explore-all-btn" onClick={onOpenAllProjects}>
-            <span>Explore All 9 Projects & Case Studies</span>
-            <ArrowRight size={18} />
-          </button>
+          {viewMode === 'top' ? (
+            <button className="btn-primary explore-all-btn" onClick={() => setViewMode('all')}>
+              <span>Explore All {fullProjectsData.length} Projects & Case Studies</span>
+              <ArrowRight size={18} />
+            </button>
+          ) : (
+            <button className="btn-outline explore-all-btn" onClick={() => setViewMode('top')}>
+              <span>Show Top 3 Projects Only</span>
+            </button>
+          )}
         </div>
       </div>
 

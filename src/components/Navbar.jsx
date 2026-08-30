@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import logoImg from '../../Images/logo.png';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onProjectsClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -40,10 +40,16 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'About Me', href: '#about', id: 'about' },
-    { name: 'Projects', href: '#all-projects', id: 'projects' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Achievements', href: '#achievements', id: 'achievements' },
     { name: 'Contact Me', href: '#contact', id: 'contact' },
   ];
+
+  const handleNavClick = (linkId) => {
+    if (linkId === 'projects' && onProjectsClick) {
+      onProjectsClick();
+    }
+  };
 
   return (
     <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
@@ -61,6 +67,7 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   className={`nav-item-link ${activeSection === link.id ? 'active' : ''}`}
+                  onClick={() => handleNavClick(link.id)}
                 >
                   {link.name}
                 </a>
@@ -95,7 +102,10 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleNavClick(link.id);
+                  }}
                 >
                   {link.name}
                 </a>
