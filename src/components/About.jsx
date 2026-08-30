@@ -1,6 +1,6 @@
 import React from 'react';
-import { Code, Smartphone, Palette, Cpu, CheckCircle2, Briefcase, Award, Users, ArrowRight, Sparkles } from 'lucide-react';
-import { personalDetails, skills, experienceTimeline, achievements, references, certification } from '../data/portfolioData';
+import { Code, Smartphone, Palette, Cpu, CheckCircle2, Award, ArrowRight, Sparkles } from 'lucide-react';
+import { personalDetails, skills, achievements } from '../data/portfolioData';
 import './About.css';
 
 const categoryIcons = {
@@ -87,39 +87,6 @@ const About = ({ onOpenFullAbout }) => {
           })}
         </div>
 
-        {/* Work Experience & Certification Section */}
-        <div className="work-exp-container">
-          <div className="exp-column">
-            <div className="column-header">
-              <Briefcase size={26} color="#FD6F00" />
-              <h3>Work Experience & Certification</h3>
-            </div>
-            <div className="timeline">
-              {experienceTimeline.map((exp, idx) => (
-                <div key={idx} className="timeline-item">
-                  <div className="timeline-dot" />
-                  <div className="timeline-content">
-                    <span className="timeline-period">{exp.period}</span>
-                    <h4>{exp.role}</h4>
-                    <span className="timeline-company">{exp.company}</span>
-                    <p>{exp.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Certifications Box */}
-            <div className="certification-box">
-              <div className="column-header" style={{ marginBottom: '14px' }}>
-                <Award size={22} color="#FD6F00" />
-                <h4>Certification</h4>
-              </div>
-              <p className="cert-title"><strong>{certification.title}</strong></p>
-              <span className="cert-issuer">{certification.issuer}</span>
-            </div>
-          </div>
-        </div>
-
         {/* Achievements Section */}
         <div id="achievements" className="achievements-container">
           <h3 className="timeline-title">Honors & Achievements</h3>
@@ -130,25 +97,6 @@ const About = ({ onOpenFullAbout }) => {
                 <div>
                   <h4>{ach.title}</h4>
                   <p>{ach.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Professional References */}
-        <div className="references-container">
-          <h3 className="timeline-title">References</h3>
-          <div className="references-grid">
-            {references.map((ref, idx) => (
-              <div key={idx} className="reference-card">
-                <Users size={22} color="#FD6F00" />
-                <div>
-                  <h4>{ref.name}</h4>
-                  <span className="ref-role">{ref.role}</span>
-                  <a href={`tel:${ref.phone.replace(/\s+/g, '')}`} className="ref-phone">
-                    {ref.phone}
-                  </a>
                 </div>
               </div>
             ))}
