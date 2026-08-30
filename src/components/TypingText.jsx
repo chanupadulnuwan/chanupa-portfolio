@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from 'react';
 
-const TypingText = ({ roles, speed = 100, deleteSpeed = 50, pauseDuration = 2000 }) => {
+const TypingText = ({ roles = [], speed = 100, deleteSpeed = 50, pauseDuration = 2000 }) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const fullText = roles[currentRoleIndex];
+    if (!roles || roles.length === 0) return;
 
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing forward
-        setCurrentText(fullText.substring(0, currentText.length + 1));
-        
-        if (currentText === fullText) {
-          // Pause at full word before deleting
-          setTimeout(() => setIsDeleting(true), pauseDuration);
-        }
-      } else {
-        // Deleting backward
-        setCurrentText(fullText.substring(0, currentText.length - 1));
-        
-        if (currentText === '') {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, isDeleting ? deleteSpeed : speed);
+    const fullText = roles[currentRoleIndex] || '';
+
+    let timer;
+
+    if (!isDeleting && currentText === fullText) {
+      // Pause at full word before deleting
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseDuration);
+    } else if (isDeleting && currentText === '') {
+      // Move to next word
+      setIsDeleting(false);
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+    } else {
+      // Step character by character
+      timer = setTimeout(() => {
+        const nextText = isDeleting
+          ? fullText.substring(0, currentText.length - 1)
+          : fullText.substring(0, currentText.length + 1);
+        setCurrentText(nextText);
+      }, isDeleting ? deleteSpeed : speed);
+    }
 
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentRoleIndex, roles, speed, deleteSpeed, pauseDuration]);
