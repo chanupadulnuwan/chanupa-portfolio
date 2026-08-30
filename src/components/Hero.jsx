@@ -107,8 +107,8 @@ const Hero = ({ onOpenCV }) => {
         {/* Right Column - 3D Pop-Out Avatar Effect (2 Circles technique) */}
         <div className="hero-image-wrapper">
           {/* Curved Text along left side of circle */}
-          <svg className="hero-curved-text-svg" viewBox="0 0 520 520">
-            <path id="seekHigherPath" d="M 65,395 A 250,250 0 0,1 270,10" fill="none" />
+          <svg className="hero-curved-text-svg" viewBox="0 0 580 580">
+            <path id="seekHigherPath" d="M 70,445 A 268,268 0 0,1 405,45" fill="none" />
             <text className="curved-text">
               <textPath href="#seekHigherPath" startOffset="0%">
                 Seek Higher Things
