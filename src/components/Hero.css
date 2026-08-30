@@ -294,6 +294,13 @@
     width: 100%;
   }
 
+  /* Mobile-Only: Hide Download CV button & Curved Motto Line */
+  .hero-actions > button,
+  .hero-actions .specular-btn-container,
+  .hero-curved-text-svg {
+    display: none !important;
+  }
+
   .hero-stats-card {
     width: 100%;
     max-width: 100%;
@@ -315,13 +322,14 @@
     height: 32px;
   }
 
+  /* Mobile-Only: Slightly smaller avatar size */
   .hero-image-wrapper {
-    transform: translate(0, 0) scale(0.65);
+    transform: translate(0, 0) scale(0.55);
     transform-origin: top center;
     width: 100%;
-    height: 420px;
+    height: 350px;
     margin-top: 0;
-    margin-bottom: -110px;
+    margin-bottom: -120px;
   }
 }
 
@@ -358,9 +366,10 @@
     font-size: 11px;
   }
 
+  /* Mobile-Only: Slightly smaller avatar size for small devices */
   .hero-image-wrapper {
-    transform: translate(0, 0) scale(0.52);
-    height: 340px;
-    margin-bottom: -140px;
+    transform: translate(0, 0) scale(0.45);
+    height: 290px;
+    margin-bottom: -150px;
   }
 }
