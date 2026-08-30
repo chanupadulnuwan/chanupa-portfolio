@@ -98,3 +98,28 @@
   font-weight: 700;
   color: var(--color-text-main, #ffffff);
 }
+
+@media (max-width: 768px) {
+  .tech-marquee-section {
+    margin: 45px 0;
+  }
+  .tech-marquee-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  .tech-card-pill {
+    padding: 10px 18px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+  .tech-card-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .tech-card-name {
+    font-size: 14px;
+  }
+  .marquee-track {
+    gap: 12px;
+  }
+}

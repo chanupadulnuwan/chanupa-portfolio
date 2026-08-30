@@ -298,8 +298,37 @@
   background: var(--color-primary-hover);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .project-image-wrapper {
+    height: 185px;
+  }
+  .project-content {
+    padding: 20px;
+  }
+  .project-title {
+    font-size: 18px;
+  }
+  .project-desc {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+  }
+  .projects-filters-wrapper {
+    padding: 16px;
+    gap: 12px;
+  }
+  .all-filter-pill,
+  .status-filter-pill {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+  .explore-all-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -348,7 +348,6 @@
   color: var(--color-primary, #FD6F00);
 }
 
-/* Responsive Styles */
 @media (max-width: 900px) {
   .about-hero-card {
     grid-template-columns: 1fr;
@@ -362,5 +361,50 @@
   .story-chapter-card {
     flex-direction: column;
     padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-me-page {
+    padding-top: 95px;
+    padding-bottom: 50px;
+  }
+  .about-main-title {
+    font-size: 26px;
+  }
+  .about-motto-quote {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .about-hero-card {
+    padding: 20px;
+    gap: 20px;
+  }
+  .about-profile-img {
+    width: 140px;
+    height: 140px;
+  }
+  .story-heading {
+    font-size: 22px;
+  }
+  .story-lead {
+    font-size: 14px;
+  }
+  .highlight-pill {
+    font-size: 12.5px;
+    padding: 8px 14px;
+  }
+  .story-chapter-card {
+    padding: 18px;
+  }
+  .chapter-content h3 {
+    font-size: 18px;
+  }
+  .chapter-paragraph {
+    font-size: 13.5px;
+  }
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
