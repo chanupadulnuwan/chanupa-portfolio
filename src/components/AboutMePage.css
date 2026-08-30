@@ -1,6 +1,7 @@
 .about-me-page {
   min-height: 100vh;
   background-color: var(--color-bg, #0d0d0d);
+  background-image: radial-gradient(circle at 50% 0%, rgba(253, 111, 0, 0.07) 0%, rgba(253, 111, 0, 0.025) 35%, transparent 65%);
   color: var(--color-text-main, #ffffff);
   padding-top: 130px;
   padding-bottom: 80px;
