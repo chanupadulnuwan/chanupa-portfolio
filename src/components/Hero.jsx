@@ -3,6 +3,7 @@ import { Download } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon, MailIcon, GithubIcon } from './SocialIcons';
 import TypingText from './TypingText';
 import SpecularButton from './SpecularButton';
+import AcidSquares from './AcidSquares';
 import { personalDetails } from '../data/portfolioData';
 import meImg from '../../Images/me.png';
 import './Hero.css';
@@ -10,6 +11,34 @@ import './Hero.css';
 const Hero = ({ onOpenCV }) => {
   return (
     <section id="home" className="hero-section">
+      {/* Background Raymarched Grid Matrix Effect for Home Section */}
+      <div className="hero-bg-acid">
+        <AcidSquares
+          color1="#000000"
+          color2="#623516"
+          color3="#392a1f"
+          detail="medium"
+          speed={0.7}
+          waveDepth={1}
+          zoom={1.3}
+          density={10.0}
+          glow={1.0}
+          exposure={2700}
+          spread={0.3}
+          stepSize={0.002}
+          colorShift={0}
+          contrast={1}
+          brightness={1.0}
+          opacity={0.8}
+          mouseInteraction={true}
+          mouseStrength={0.1}
+          mouseRadius={0.35}
+          blur={0}
+          grain={true}
+          grainIntensity={0.05}
+        />
+      </div>
+
       <div className="container hero-container">
         {/* Left Column - Content */}
         <div className="hero-content">
