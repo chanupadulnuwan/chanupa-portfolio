@@ -185,6 +185,19 @@ const AcidSquares = ({
 
     let renderer;
     let gl;
+    let program;
+    let postProgram;
+    let mesh;
+    let postMesh;
+    let rtA = null;
+    let rtB = null;
+    let ro;
+    let io;
+    let raf = 0;
+    let handleMouseMove;
+    let handleMouseLeave;
+    let onVisibility;
+
     try {
       renderer = new Renderer({
         webgl: 2,
@@ -195,217 +208,220 @@ const AcidSquares = ({
       });
       gl = renderer.gl;
       if (!gl) return;
+
+      gl.clearColor(0, 0, 0, 0);
+      const canvas = gl.canvas;
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.display = 'block';
+      container.appendChild(canvas);
+
+      const geometry = new Triangle(gl);
+      program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          iTime: { value: 0 },
+          iResolution: { value: new Float32Array([1, 1]) },
+          uSpeed: { value: 0.7 },
+          uWaveDepth: { value: 1 },
+          uZoom: { value: 1.3 },
+          uDensity: { value: 10.0 },
+          uSpread: { value: 0.3 },
+          uStepSize: { value: 0.002 },
+          uGlow: { value: 1.0 },
+          uExposure: { value: 2700 },
+          uColorShift: { value: 0 },
+          uContrast: { value: 1 },
+          uBrightness: { value: 1.0 },
+          uOpacity: { value: 1.0 },
+          uSteps: { value: 32 },
+          uColor1: { value: new Float32Array([1, 1, 1]) },
+          uColor2: { value: new Float32Array([1, 1, 1]) },
+          uColor3: { value: new Float32Array([1, 1, 1]) },
+          uMouse: { value: new Float32Array([0, 0]) },
+          uMouseStrength: { value: 0.1 },
+          uMouseRadius: { value: 0.35 },
+          uEnableMouse: { value: 1.0 },
+          uMouseActive: { value: 0.0 },
+          uGrain: { value: 1.0 },
+          uGrainIntensity: { value: 0.05 },
+          uLightMode: { value: 0.0 }
+        }
+      });
+
+      mesh = new Mesh(gl, { geometry, program });
+
+      postProgram = new Program(gl, {
+        vertex,
+        fragment: postFragment,
+        uniforms: {
+          tMap: { value: null },
+          iResolution: { value: new Float32Array([1, 1]) },
+          uDirection: { value: new Float32Array([1, 0]) },
+          uRadius: { value: 0 },
+          uGrain: { value: 0 },
+          uGrainIntensity: { value: 0.05 },
+          iTime: { value: 0 }
+        }
+      });
+      postMesh = new Mesh(gl, { geometry, program: postProgram });
+
+      const ensureTargets = () => {
+        if (!rtA) {
+          const bw = gl.drawingBufferWidth;
+          const bh = gl.drawingBufferHeight;
+          rtA = new RenderTarget(gl, { width: bw, height: bh, depth: false });
+          rtB = new RenderTarget(gl, { width: bw, height: bh, depth: false });
+        }
+      };
+
+      const renderFrame = () => {
+        const grainOn = grainRef.current ? 1.0 : 0.0;
+        const grainAmt = grainIntensityRef.current;
+        program.uniforms.uGrainIntensity.value = grainAmt;
+        postProgram.uniforms.uGrainIntensity.value = grainAmt;
+        if (blurRef.current > 0) {
+          ensureTargets();
+          program.uniforms.uGrain.value = 0.0;
+          renderer.render({ scene: mesh, target: rtA });
+          const pu = postProgram.uniforms;
+          pu.uRadius.value = blurRef.current * 14.0;
+          pu.tMap.value = rtA.texture;
+          pu.uDirection.value[0] = 1;
+          pu.uDirection.value[1] = 0;
+          pu.uGrain.value = 0.0;
+          renderer.render({ scene: postMesh, target: rtB });
+          pu.tMap.value = rtB.texture;
+          pu.uDirection.value[0] = 0;
+          pu.uDirection.value[1] = 1;
+          pu.uGrain.value = grainOn;
+          renderer.render({ scene: postMesh });
+        } else {
+          program.uniforms.uGrain.value = grainOn;
+          renderer.render({ scene: mesh });
+        }
+      };
+
+      ctxMap.set(container, { renderer, program, mesh });
+
+      const setSize = () => {
+        const rect = container.getBoundingClientRect();
+        const w = Math.max(1, Math.floor(rect.width));
+        const h = Math.max(1, Math.floor(rect.height));
+        renderer.setSize(w, h);
+        const bw = gl.drawingBufferWidth;
+        const bh = gl.drawingBufferHeight;
+        const res = program.uniforms.iResolution.value;
+        res[0] = bw;
+        res[1] = bh;
+        const pres = postProgram.uniforms.iResolution.value;
+        pres[0] = bw;
+        pres[1] = bh;
+        if (rtA) {
+          rtA.setSize(bw, bh);
+          rtB.setSize(bw, bh);
+        }
+        renderFrame();
+      };
+
+      ro = new ResizeObserver(setSize);
+      ro.observe(container);
+      setSize();
+
+      handleMouseMove = e => {
+        const rect = container.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2.0;
+        const y = -((e.clientY - rect.top) / rect.height - 0.5) * 2.0;
+        mouseTarget.current = [x, y];
+        mouseActiveTarget.current = 1;
+      };
+      handleMouseLeave = () => {
+        mouseActiveTarget.current = 0;
+      };
+      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mouseleave', handleMouseLeave);
+
+      let isVisible = true;
+      let isPageVisible = !document.hidden;
+      const t0 = performance.now();
+
+      const loop = t => {
+        program.uniforms.iTime.value = (t - t0) * 0.001;
+
+        const cur = mouseCurrent.current;
+        const tgt = mouseTarget.current;
+        cur[0] += 0.05 * (tgt[0] - cur[0]);
+        cur[1] += 0.05 * (tgt[1] - cur[1]);
+        const m = program.uniforms.uMouse.value;
+        m[0] = cur[0];
+        m[1] = cur[1];
+        const activeTarget = enableMouseRef.current ? mouseActiveTarget.current : 0;
+        mouseActive.current += 0.05 * (activeTarget - mouseActive.current);
+        program.uniforms.uMouseActive.value = mouseActive.current;
+        program.uniforms.uEnableMouse.value = enableMouseRef.current ? 1.0 : 0.0;
+        program.uniforms.uMouseStrength.value = mouseStrengthRef.current;
+
+        postProgram.uniforms.iTime.value = program.uniforms.iTime.value;
+        renderFrame();
+        raf = requestAnimationFrame(loop);
+      };
+
+      const tryStart = () => {
+        if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop);
+      };
+      const tryStop = () => {
+        if (raf !== 0) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      };
+
+      io = new IntersectionObserver(
+        ([entry]) => {
+          isVisible = entry.isIntersecting;
+          isVisible ? tryStart() : tryStop();
+        },
+        { threshold: 0 }
+      );
+      io.observe(container);
+
+      onVisibility = () => {
+        isPageVisible = !document.hidden;
+        isPageVisible ? tryStart() : tryStop();
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+
+      tryStart();
     } catch (err) {
-      console.warn("AcidSquares WebGL context error:", err);
+      console.warn("AcidSquares WebGL initialization failed:", err);
       return;
     }
 
-    gl.clearColor(0, 0, 0, 0);
-    const canvas = gl.canvas;
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.display = 'block';
-    container.appendChild(canvas);
-
-    const geometry = new Triangle(gl);
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uSpeed: { value: 0.7 },
-        uWaveDepth: { value: 1 },
-        uZoom: { value: 1.3 },
-        uDensity: { value: 10.0 },
-        uSpread: { value: 0.3 },
-        uStepSize: { value: 0.002 },
-        uGlow: { value: 1.0 },
-        uExposure: { value: 2700 },
-        uColorShift: { value: 0 },
-        uContrast: { value: 1 },
-        uBrightness: { value: 1.0 },
-        uOpacity: { value: 1.0 },
-        uSteps: { value: 32 },
-        uColor1: { value: new Float32Array([1, 1, 1]) },
-        uColor2: { value: new Float32Array([1, 1, 1]) },
-        uColor3: { value: new Float32Array([1, 1, 1]) },
-        uMouse: { value: new Float32Array([0, 0]) },
-        uMouseStrength: { value: 0.1 },
-        uMouseRadius: { value: 0.35 },
-        uEnableMouse: { value: 1.0 },
-        uMouseActive: { value: 0.0 },
-        uGrain: { value: 1.0 },
-        uGrainIntensity: { value: 0.05 },
-        uLightMode: { value: 0.0 }
-      }
-    });
-
-    const mesh = new Mesh(gl, { geometry, program });
-
-    const postProgram = new Program(gl, {
-      vertex,
-      fragment: postFragment,
-      uniforms: {
-        tMap: { value: null },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uDirection: { value: new Float32Array([1, 0]) },
-        uRadius: { value: 0 },
-        uGrain: { value: 0 },
-        uGrainIntensity: { value: 0.05 },
-        iTime: { value: 0 }
-      }
-    });
-    const postMesh = new Mesh(gl, { geometry, program: postProgram });
-
-    let rtA = null;
-    let rtB = null;
-    const ensureTargets = () => {
-      if (!rtA) {
-        const bw = gl.drawingBufferWidth;
-        const bh = gl.drawingBufferHeight;
-        rtA = new RenderTarget(gl, { width: bw, height: bh, depth: false });
-        rtB = new RenderTarget(gl, { width: bw, height: bh, depth: false });
-      }
-    };
-
-    const renderFrame = () => {
-      const grainOn = grainRef.current ? 1.0 : 0.0;
-      const grainAmt = grainIntensityRef.current;
-      program.uniforms.uGrainIntensity.value = grainAmt;
-      postProgram.uniforms.uGrainIntensity.value = grainAmt;
-      if (blurRef.current > 0) {
-        ensureTargets();
-        program.uniforms.uGrain.value = 0.0;
-        renderer.render({ scene: mesh, target: rtA });
-        const pu = postProgram.uniforms;
-        pu.uRadius.value = blurRef.current * 14.0;
-        pu.tMap.value = rtA.texture;
-        pu.uDirection.value[0] = 1;
-        pu.uDirection.value[1] = 0;
-        pu.uGrain.value = 0.0;
-        renderer.render({ scene: postMesh, target: rtB });
-        pu.tMap.value = rtB.texture;
-        pu.uDirection.value[0] = 0;
-        pu.uDirection.value[1] = 1;
-        pu.uGrain.value = grainOn;
-        renderer.render({ scene: postMesh });
-      } else {
-        program.uniforms.uGrain.value = grainOn;
-        renderer.render({ scene: mesh });
-      }
-    };
-
-    ctxMap.set(container, { renderer, program, mesh });
-
-    const setSize = () => {
-      const rect = container.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
-      renderer.setSize(w, h);
-      const bw = gl.drawingBufferWidth;
-      const bh = gl.drawingBufferHeight;
-      const res = program.uniforms.iResolution.value;
-      res[0] = bw;
-      res[1] = bh;
-      const pres = postProgram.uniforms.iResolution.value;
-      pres[0] = bw;
-      pres[1] = bh;
-      if (rtA) {
-        rtA.setSize(bw, bh);
-        rtB.setSize(bw, bh);
-      }
-      renderFrame();
-    };
-
-    const ro = new ResizeObserver(setSize);
-    ro.observe(container);
-    setSize();
-
-    const handleMouseMove = e => {
-      const rect = container.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2.0;
-      const y = -((e.clientY - rect.top) / rect.height - 0.5) * 2.0;
-      mouseTarget.current = [x, y];
-      mouseActiveTarget.current = 1;
-    };
-    const handleMouseLeave = () => {
-      mouseActiveTarget.current = 0;
-    };
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseleave', handleMouseLeave);
-
-    let raf = 0;
-    let isVisible = true;
-    let isPageVisible = !document.hidden;
-    const t0 = performance.now();
-
-    const loop = t => {
-      program.uniforms.iTime.value = (t - t0) * 0.001;
-
-      const cur = mouseCurrent.current;
-      const tgt = mouseTarget.current;
-      cur[0] += 0.05 * (tgt[0] - cur[0]);
-      cur[1] += 0.05 * (tgt[1] - cur[1]);
-      const m = program.uniforms.uMouse.value;
-      m[0] = cur[0];
-      m[1] = cur[1];
-      const activeTarget = enableMouseRef.current ? mouseActiveTarget.current : 0;
-      mouseActive.current += 0.05 * (activeTarget - mouseActive.current);
-      program.uniforms.uMouseActive.value = mouseActive.current;
-      program.uniforms.uEnableMouse.value = enableMouseRef.current ? 1.0 : 0.0;
-      program.uniforms.uMouseStrength.value = mouseStrengthRef.current;
-
-      postProgram.uniforms.iTime.value = program.uniforms.iTime.value;
-      renderFrame();
-      raf = requestAnimationFrame(loop);
-    };
-
-    const tryStart = () => {
-      if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop);
-    };
-    const tryStop = () => {
-      if (raf !== 0) {
-        cancelAnimationFrame(raf);
-        raf = 0;
-      }
-    };
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        isVisible ? tryStart() : tryStop();
-      },
-      { threshold: 0 }
-    );
-    io.observe(container);
-
-    const onVisibility = () => {
-      isPageVisible = !document.hidden;
-      isPageVisible ? tryStart() : tryStop();
-    };
-    document.addEventListener('visibilitychange', onVisibility);
-
-    tryStart();
-
     return () => {
-      tryStop();
-      ro.disconnect();
-      io.disconnect();
-      document.removeEventListener('visibilitychange', onVisibility);
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseleave', handleMouseLeave);
+      if (raf !== 0) cancelAnimationFrame(raf);
+      if (ro) ro.disconnect();
+      if (io) io.disconnect();
+      if (onVisibility) document.removeEventListener('visibilitychange', onVisibility);
+      if (handleMouseMove) container.removeEventListener('mousemove', handleMouseMove);
+      if (handleMouseLeave) container.removeEventListener('mouseleave', handleMouseLeave);
       ctxMap.delete(container);
       if (rtA) {
-        gl.deleteFramebuffer(rtA.buffer);
-        gl.deleteFramebuffer(rtB.buffer);
-        rtA.textures.forEach(tex => gl.deleteTexture(tex.texture));
-        rtB.textures.forEach(tex => gl.deleteTexture(tex.texture));
+        try {
+          gl.deleteFramebuffer(rtA.buffer);
+          gl.deleteFramebuffer(rtB.buffer);
+          rtA.textures.forEach(tex => gl.deleteTexture(tex.texture));
+          rtB.textures.forEach(tex => gl.deleteTexture(tex.texture));
+        } catch {}
       }
       try {
-        container.removeChild(canvas);
+        if (gl && gl.canvas && gl.canvas.parentNode === container) {
+          container.removeChild(gl.canvas);
+        }
       } catch {}
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      try {
+        gl?.getExtension('WEBGL_lose_context')?.loseContext();
+      } catch {}
     };
   }, []);
 
