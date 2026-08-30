@@ -1,14 +1,8 @@
 import React from 'react';
-import { Code, Smartphone, Palette, Cpu, CheckCircle2, Award, ArrowRight, Sparkles } from 'lucide-react';
-import { personalDetails, skills, achievements } from '../data/portfolioData';
+import { CheckCircle2, Award, ArrowRight, Sparkles } from 'lucide-react';
+import { personalDetails, achievements } from '../data/portfolioData';
+import TechMarquee from './TechMarquee';
 import './About.css';
-
-const categoryIcons = {
-  "Full Stack & Web": Code,
-  "Mobile & Frameworks": Smartphone,
-  "Databases & Tools": Cpu,
-  "UI/UX & AI Tools": Palette,
-};
 
 const About = ({ onOpenFullAbout }) => {
   return (
@@ -62,30 +56,8 @@ const About = ({ onOpenFullAbout }) => {
           </div>
         </div>
 
-        {/* Technical Skills Grid */}
-        <h3 className="skills-grid-title">Technical Expertise</h3>
-        <div className="skills-grid">
-          {skills.map((skillCat, idx) => {
-            const IconComponent = categoryIcons[skillCat.category] || Code;
-            return (
-              <div key={idx} className="skill-card">
-                <div className="skill-card-header">
-                  <div className="skill-icon-wrapper">
-                    <IconComponent size={24} color="#FD6F00" />
-                  </div>
-                  <h4>{skillCat.category}</h4>
-                </div>
-                <div className="skill-tags">
-                  {skillCat.items.map((item, itemIdx) => (
-                    <span key={itemIdx} className="skill-tag">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {/* Dynamic Infinite Animated Tech Marquee */}
+        <TechMarquee />
 
         {/* Achievements Section */}
         <div id="achievements" className="achievements-container">
