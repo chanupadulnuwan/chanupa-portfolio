@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
 import AboutMePage from './components/AboutMePage';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -11,13 +10,14 @@ import CVModal from './components/CVModal';
 function App() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState('home');
-  const [projectsViewMode, setProjectsViewMode] = useState('top');
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash === '#about-me') {
         setCurrentView('about-me');
+      } else if (hash === '#projects') {
+        setCurrentView('projects');
       } else {
         setCurrentView('home');
       }
@@ -34,40 +34,60 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navigateToProjects = () => {
+    setCurrentView('projects');
+    window.history.pushState(null, '', '#projects');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navigateToHome = () => {
     setCurrentView('home');
     window.history.pushState(null, '', '#home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const showAllProjects = () => {
+  const handleContactClick = () => {
     if (currentView !== 'home') {
       setCurrentView('home');
-      window.history.pushState(null, '', '#projects');
-    }
-    setProjectsViewMode('all');
-    setTimeout(() => {
-      const el = document.getElementById('projects');
+      window.history.pushState(null, '', '#contact');
+      setTimeout(() => {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById('contact');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    }
   };
 
   return (
     <div className="portfolio-app">
       <Navbar
-        onProjectsClick={showAllProjects}
+        currentView={currentView}
         onAboutClick={navigateToFullAbout}
+        onProjectsClick={navigateToProjects}
+        onHomeClick={navigateToHome}
+        onContactClick={handleContactClick}
       />
       <main>
         {currentView === 'about-me' ? (
           <AboutMePage onBackToHome={navigateToHome} />
+        ) : currentView === 'projects' ? (
+          <div style={{ paddingTop: '100px' }}>
+            <Projects
+              viewMode="all"
+              onExploreTop={() => setProjectsViewMode('top')}
+              onExploreAll={navigateToProjects}
+              isDedicatedPage={true}
+              onBackToHome={navigateToHome}
+            />
+          </div>
         ) : (
           <>
             <Hero onOpenCV={() => setIsCVModalOpen(true)} />
-            <About onOpenFullAbout={navigateToFullAbout} />
             <Projects
-              viewMode={projectsViewMode}
-              setViewMode={setProjectsViewMode}
+              viewMode="top"
+              onExploreAll={navigateToProjects}
             />
             <Contact />
           </>

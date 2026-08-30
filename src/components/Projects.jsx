@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { ExternalLink, ArrowRight, Eye, CheckCircle2, Clock, Layers } from 'lucide-react';
+import { ExternalLink, ArrowRight, ArrowLeft, Eye, CheckCircle2, Clock } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import { fullProjectsData } from '../data/projectsData';
 import ProjectDetailModal from './ProjectDetailModal';
 import './Projects.css';
 
-const Projects = ({ viewMode = 'top', setViewMode }) => {
+const Projects = ({ viewMode = 'top', onExploreAll, onBackToHome, isDedicatedPage = false }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [activeStatus, setActiveStatus] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
@@ -30,6 +30,16 @@ const Projects = ({ viewMode = 'top', setViewMode }) => {
   return (
     <section id="projects" className="section-padding projects-section">
       <div className="container">
+        {/* Back to Home Button on Dedicated Projects Page */}
+        {isDedicatedPage && (
+          <div style={{ marginBottom: '24px' }}>
+            <button className="btn-outline" onClick={onBackToHome} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 16px', borderRadius: '8px' }}>
+              <ArrowLeft size={16} />
+              <span>Back to Home</span>
+            </button>
+          </div>
+        )}
+
         {/* Section Header */}
         <div className="section-header">
           <span className="section-subtitle">
@@ -43,23 +53,6 @@ const Projects = ({ viewMode = 'top', setViewMode }) => {
               ? 'A curated selection of my primary commercial, mobile, and web engineering achievements.'
               : 'Explore my complete collection of 9 real projects, featuring in-depth development stories, technical breakdowns, live links, and GitHub repositories.'}
           </p>
-        </div>
-
-        {/* View Mode Switcher Pills */}
-        <div className="view-mode-switcher">
-          <button
-            className={`mode-toggle-btn ${viewMode === 'top' ? 'active' : ''}`}
-            onClick={() => setViewMode('top')}
-          >
-            <span>Top Projects (3)</span>
-          </button>
-          <button
-            className={`mode-toggle-btn ${viewMode === 'all' ? 'active' : ''}`}
-            onClick={() => setViewMode('all')}
-          >
-            <Layers size={15} />
-            <span>All Projects ({fullProjectsData.length})</span>
-          </button>
         </div>
 
         {/* Filters Bar (Only shown when viewMode is 'all') */}
@@ -197,19 +190,15 @@ const Projects = ({ viewMode = 'top', setViewMode }) => {
           ))}
         </div>
 
-        {/* Bottom Toggle Action Button */}
-        <div className="explore-all-projects-wrapper">
-          {viewMode === 'top' ? (
-            <button className="btn-primary explore-all-btn" onClick={() => setViewMode('all')}>
+        {/* Bottom Action Button */}
+        {viewMode === 'top' && (
+          <div className="explore-all-projects-wrapper">
+            <button className="btn-primary explore-all-btn" onClick={onExploreAll}>
               <span>Explore All {fullProjectsData.length} Projects & Case Studies</span>
               <ArrowRight size={18} />
             </button>
-          ) : (
-            <button className="btn-outline explore-all-btn" onClick={() => setViewMode('top')}>
-              <span>Show Top 3 Projects Only</span>
-            </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Project Details Modal View */}
