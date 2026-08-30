@@ -1,6 +1,8 @@
-// Detailed Projects Data Source with imports and first-person stories
+// Detailed Projects Data Source with imports, first-person stories, and status badges
 
 // Image Imports from Images/Projects/
+import uiMockup from '../../UI mocup.png';
+
 // Bathi's World
 import bhathi1 from '../../Images/Projects/Bathi\'s World/Screenshot 2026-08-31 002010.png';
 import bhathi2 from '../../Images/Projects/Bathi\'s World/Screenshot 2026-08-31 002041.png';
@@ -15,6 +17,8 @@ import nestle2 from '../../Images/Projects/Nestle Insight/1782147907980.jpeg';
 import nestle3 from '../../Images/Projects/Nestle Insight/1782147907881.jpeg';
 import nestle4 from '../../Images/Projects/Nestle Insight/1782147910236.jpeg';
 import nestle5 from '../../Images/Projects/Nestle Insight/1782147912047.jpeg';
+import nestleExtra1 from '../../Images/Projects/Nestle Insight/1782147905117.jpeg';
+import nestleExtra2 from '../../Images/Projects/Nestle Insight/1782147907531.jpeg';
 
 // PayPatch Web APP
 import paypatchWeb1 from '../../Images/Projects/PayPatch Web APP/Screenshot 2026-08-31 002853.png';
@@ -47,6 +51,8 @@ export const fullProjectsData = [
     title: "Nestlé Insight – Demand Signal & Territory Implementation Platform",
     subtitle: "Enterprise Mobile & Web Demand-Signal Solution for FMCG Retail Chains",
     category: "Full Stack",
+    status: "Completed",
+    isTopProject: true,
     year: "2026",
     role: "Project Lead, Developer, Business Analyst & QA Support",
     teamMembers: ["Kanish Ashwinth Gangatharan", "Amien Sainudeen", "Savinu Guruge", "Dr. Tharanga Peiris (Academic Supervisor)"],
@@ -75,10 +81,69 @@ export const fullProjectsData = [
     ]
   },
   {
+    id: "bhathis-world",
+    title: "Bhathi’s World – Content Creator Web Platform",
+    subtitle: "Magical-Themed Creator Portfolio Website for Bhathiya Maneth",
+    category: "Web App",
+    status: "Ongoing",
+    isTopProject: true,
+    year: "2026",
+    role: "UI/UX Designer & Web Developer",
+    teamMembers: ["Chanupa Dulnuwan (Solo Developer for Bhathiya Maneth)"],
+    coverImage: bhathi1,
+    gallery: [bhathi1, bhathi2, bhathi3, bhathi4, bhathi5, bhathi6],
+    tech: ["React.js", "JavaScript", "HTML5 & CSS3", "Figma", "Vercel"],
+    githubLinks: [{ label: "GitHub Repository", url: "https://github.com/chanupadulnuwan/-bhathis-world" }],
+    liveLink: "https://www.bhathisworld.com/",
+    shortDesc: "Custom portfolio web platform designed and built for social media content creator Bhathiya Maneth, inspired by a magical aesthetic.",
+    story: [
+      "In 2026, I was commissioned to design and build Bhathi’s World — an official portfolio website for social media content creator Bhathiya Maneth.",
+      "To match his personal brand and video style, I crafted a UI design in Figma centered around a dark, magical atmosphere—incorporating glowing elements, dark glass cards, and immersive typography.",
+      "Built with React.js and deployed on Vercel, the site showcases his media content, brand collaborations, personal story, and contact channels with high performance across all screen sizes.",
+      "This project is currently ongoing as we continually add new interactive video galleries and audience engagement features."
+    ],
+    features: [
+      "Magical Theme UI: Unique dark aesthetic designed in Figma tailored to the creator's vibe.",
+      "React Component Architecture: Fast, single-page navigation with smooth transitions.",
+      "Media & Project Showcase: Dedicated sections for YouTube/Instagram video highlights and brand deals.",
+      "Custom Domain Deployment: Hosted live on Vercel at bhathisworld.com."
+    ]
+  },
+  {
+    id: "paypatch-mobile",
+    title: "PayPatch – Cross-Platform Mobile Application",
+    subtitle: "Flutter Mobile App for On-the-Go Expense Tracking & Bill Splitting",
+    category: "Mobile App",
+    status: "Completed",
+    isTopProject: true,
+    year: "2026",
+    role: "Mobile App Developer & UI Designer",
+    teamMembers: ["Chanupa Dulnuwan (Solo Developer)"],
+    coverImage: paypatchMob1,
+    gallery: [paypatchMob1, paypatchMob2, paypatchMob3],
+    tech: ["Flutter", "Dart", "Firebase", "State Management", "REST API", "UI/UX"],
+    githubLinks: [{ label: "GitHub Flutter Repo", url: "https://github.com/chanupadulnuwan/paypatch-flutter" }],
+    shortDesc: "Mobile expense tracking app built in Flutter with real-time balance calculations, group splitting, and push notifications.",
+    story: [
+      "To complement the PayPatch web platform, I developed the PayPatch Mobile App using Flutter and Dart, giving users instant access to group financial tracking right from their smartphones.",
+      "The mobile app emphasizes quick entry and clean visual cues. Users can snap receipts, select group members, view live individual balances, and mark debts as settled with a single tap.",
+      "I focused on offline-first state management, smooth screen transitions, and lightweight API calls to ensure responsive performance across both Android and iOS devices.",
+      "This project honed my expertise in cross-platform mobile UI engineering, state management patterns, and building production-ready mobile apps."
+    ],
+    features: [
+      "Cross-Platform Native Speed: Built with Flutter for seamless Android & iOS deployment.",
+      "Instant Receipt Logging: Quickly record expenses on the move with member tagging.",
+      "Real-Time Sync: Synchronization with cloud backend services.",
+      "Clean Dark/Light UI: Modern mobile interface designed for readability and speed."
+    ]
+  },
+  {
     id: "some-ai-ecosystem",
     title: "Sōmē AI ECO System – Designathon 2026 Runner Up",
     subtitle: "Emotionally Intelligent & Context-Aware Digital Life Companion",
     category: "UI/UX Design",
+    status: "Completed",
+    isTopProject: false,
     year: "2026",
     role: "Lead UI/UX Designer & Prototyper",
     teamMembers: ["Sihas Senevirathne (Team Leader)", "Yelani Samarathunga (Voice & Product Dubbing)"],
@@ -106,6 +171,8 @@ export const fullProjectsData = [
     title: "PayPatch – Expenses Sharing Web Platform",
     subtitle: "Full-Stack Laravel Web Application for Shared Expense Management",
     category: "Web App",
+    status: "Completed",
+    isTopProject: false,
     year: "2026",
     role: "Full Stack Developer",
     teamMembers: ["Chanupa Dulnuwan (Solo Developer)"],
@@ -129,68 +196,17 @@ export const fullProjectsData = [
     ]
   },
   {
-    id: "paypatch-mobile",
-    title: "PayPatch – Cross-Platform Mobile Application",
-    subtitle: "Flutter Mobile App for On-the-Go Expense Tracking & Bill Splitting",
-    category: "Mobile App",
-    year: "2026",
-    role: "Mobile App Developer & UI Designer",
-    teamMembers: ["Chanupa Dulnuwan (Solo Developer)"],
-    coverImage: paypatchMob1,
-    gallery: [paypatchMob1, paypatchMob2, paypatchMob3],
-    tech: ["Flutter", "Dart", "Firebase", "State Management", "REST API", "UI/UX"],
-    githubLinks: [{ label: "GitHub Flutter Repo", url: "https://github.com/chanupadulnuwan/paypatch-flutter" }],
-    shortDesc: "Mobile expense tracking app built in Flutter with real-time balance calculations, group splitting, and push notifications.",
-    story: [
-      "To complement the PayPatch web platform, I developed the PayPatch Mobile App using Flutter and Dart, giving users instant access to group financial tracking right from their smartphones.",
-      "The mobile app emphasizes quick entry and clean visual cues. Users can snap receipts, select group members, view live individual balances, and mark debts as settled with a single tap.",
-      "I focused on offline-first state management, smooth screen transitions, and lightweight API calls to ensure responsive performance across both Android and iOS devices.",
-      "This project honed my expertise in cross-platform mobile UI engineering, state management patterns, and building production-ready mobile apps."
-    ],
-    features: [
-      "Cross-Platform Native Speed: Built with Flutter for seamless Android & iOS deployment.",
-      "Instant Receipt Logging: Quickly record expenses on the move with member tagging.",
-      "Real-Time Sync: Synchronization with cloud backend services.",
-      "Clean Dark/Light UI: Modern mobile interface designed for readability and speed."
-    ]
-  },
-  {
-    id: "bhathis-world",
-    title: "Bhathi’s World – Content Creator Web Platform",
-    subtitle: "Magical-Themed Creator Portfolio Website for Bhathiya Maneth",
-    category: "Web App",
-    year: "2026",
-    role: "UI/UX Designer & Web Developer",
-    teamMembers: ["Chanupa Dulnuwan (Solo Developer for Bhathiya Maneth)"],
-    coverImage: bhathi1,
-    gallery: [bhathi1, bhathi2, bhathi3, bhathi4, bhathi5, bhathi6],
-    tech: ["React.js", "JavaScript", "HTML5 & CSS3", "Figma", "Vercel"],
-    githubLinks: [{ label: "GitHub Repository", url: "https://github.com/chanupadulnuwan/-bhathis-world" }],
-    liveLink: "https://www.bhathisworld.com/",
-    shortDesc: "Custom portfolio web platform designed and built for social media content creator Bhathiya Maneth, inspired by a magical aesthetic.",
-    story: [
-      "In 2026, I was commissioned to design and build **Bhathi’s World** — an official portfolio website for social media content creator Bhathiya Maneth.",
-      "To match his personal brand and video style, I crafted a UI design in Figma centered around a dark, magical atmosphere—incorporating glowing elements, dark glass cards, and immersive typography.",
-      "Built with React.js and deployed on Vercel, the site showcases his media content, brand collaborations, personal story, and contact channels with high performance across all screen sizes.",
-      "The client was thrilled with the result, which now serves as his primary online hub for audience engagement and brand partnerships."
-    ],
-    features: [
-      "Magical Theme UI: Unique dark aesthetic designed in Figma tailored to the creator's vibe.",
-      "React Component Architecture: Fast, single-page navigation with smooth transitions.",
-      "Media & Project Showcase: Dedicated sections for YouTube/Instagram video highlights and brand deals.",
-      "Custom Domain Deployment: Hosted live on Vercel at bhathisworld.com."
-    ]
-  },
-  {
     id: "inventory-management-system",
     title: "Desktop Inventory Management System",
     subtitle: "C# WinForms & .NET 8 Enterprise Desktop Application",
     category: "Desktop App",
+    status: "Completed",
+    isTopProject: false,
     year: "2024",
     role: "Desktop Software Engineer & Database Architect",
     teamMembers: ["Gayantha Akash", "Hemsadi Perera", "Amien Sainudeen"],
-    coverImage: phoenix1,
-    gallery: [phoenix1, phoenix2, phoenix3],
+    coverImage: uiMockup,
+    gallery: [uiMockup, nestleExtra1, nestleExtra2],
     tech: ["C#", ".NET 8", "WinForms", "MySQL", "OOP Architecture", "MVC Pattern"],
     githubLinks: [{ label: "GitHub C# Repo", url: "https://github.com/chanupadulnuwan/inventory_management_system" }],
     videoIframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463624105397805056?compact=1" height="400" width="100%" frameborder="0" allowfullscreen="" title="Inventory System Showcase"></iframe>`,
@@ -213,6 +229,8 @@ export const fullProjectsData = [
     title: "Phoenix Hub – Game Store Web App",
     subtitle: "Interactive Game Catalog & Storefront Built with Vanilla JavaScript",
     category: "Web App",
+    status: "Completed",
+    isTopProject: false,
     year: "2024",
     role: "Frontend Developer",
     teamMembers: ["Chanupa Dulnuwan (Solo Developer)"],
