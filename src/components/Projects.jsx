@@ -30,16 +30,6 @@ const Projects = ({ viewMode = 'top', onExploreAll, onBackToHome, isDedicatedPag
   return (
     <section id="projects" className="section-padding projects-section">
       <div className="container">
-        {/* Back to Home Button on Dedicated Projects Page */}
-        {isDedicatedPage && (
-          <div style={{ marginBottom: '24px' }}>
-            <button className="btn-outline" onClick={onBackToHome} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '8px 16px', borderRadius: '8px' }}>
-              <ArrowLeft size={16} />
-              <span>Back to Home</span>
-            </button>
-          </div>
-        )}
-
         {/* Section Header */}
         <div className="section-header">
           <span className="section-subtitle">

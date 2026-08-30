@@ -228,6 +228,14 @@
 /* Achievements */
 .achievements-container {
   margin-bottom: 60px;
+  margin-top: 60px;
+}
+
+.timeline-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: var(--color-text-main);
 }
 
 .achievements-grid {

@@ -1,6 +1,6 @@
 .tech-marquee-section {
   width: 100%;
-  margin: 50px 0;
+  margin: 70px 0;
   overflow: hidden;
   position: relative;
 }
@@ -9,7 +9,7 @@
   font-size: 28px;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 42px;
   color: var(--color-text-main, #ffffff);
   letter-spacing: -0.5px;
 }
