@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import logoImg from '../../Images/logo.png';
 import './Navbar.css';
 
-const Navbar = ({ onProjectsClick }) => {
+const Navbar = ({ onProjectsClick, onAboutClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -39,14 +39,16 @@ const Navbar = ({ onProjectsClick }) => {
 
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
-    { name: 'About Me', href: '#about', id: 'about' },
+    { name: 'About Me', href: '#about-me', id: 'about' },
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Achievements', href: '#achievements', id: 'achievements' },
     { name: 'Contact Me', href: '#contact', id: 'contact' },
   ];
 
   const handleNavClick = (linkId) => {
-    if (linkId === 'projects' && onProjectsClick) {
+    if (linkId === 'about' && onAboutClick) {
+      onAboutClick();
+    } else if (linkId === 'projects' && onProjectsClick) {
       onProjectsClick();
     }
   };

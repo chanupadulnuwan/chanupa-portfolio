@@ -1,6 +1,6 @@
 import React from 'react';
-import { Code, Smartphone, Palette, Cpu, CheckCircle2, GraduationCap, Briefcase, Award, Users } from 'lucide-react';
-import { personalDetails, skills, education, experienceTimeline, achievements, references, certification } from '../data/portfolioData';
+import { Code, Smartphone, Palette, Cpu, CheckCircle2, Briefcase, Award, Users, ArrowRight, Sparkles } from 'lucide-react';
+import { personalDetails, skills, experienceTimeline, achievements, references, certification } from '../data/portfolioData';
 import './About.css';
 
 const categoryIcons = {
@@ -10,16 +10,16 @@ const categoryIcons = {
   "UI/UX & AI Tools": Palette,
 };
 
-const About = () => {
+const About = ({ onOpenFullAbout }) => {
   return (
     <section id="about" className="section-padding about-section">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">About Me</span>
+          <span className="section-subtitle">Ascende Superius</span>
           <h2 className="section-title">BSc (Hons) Computer Science Undergraduate</h2>
           <p className="section-desc">
-            Studying at <strong>Staffordshire University (APIIT Sri Lanka)</strong>. Passionate about Full Stack Web Development, Mobile Engineering, and UI/UX Design.
+            Studying at <strong>Staffordshire University (APIIT Sri Lanka)</strong>. Driven by curiosity, creativity, and a constant pursuit of higher things.
           </p>
         </div>
 
@@ -31,6 +31,15 @@ const About = () => {
             <p>
               I specialize in developing cross-platform mobile apps with <strong>Flutter & React Native</strong>, building robust web applications with <strong>React & NestJS</strong>, and crafting modern UI/UX design prototypes in <strong>Figma</strong>.
             </p>
+            
+            {/* Full Story Action Button */}
+            <div style={{ marginTop: '24px' }}>
+              <button className="btn-primary" onClick={onOpenFullAbout}>
+                <Sparkles size={16} />
+                <span>Read My Full Story & Journey (Ascende Superius)</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
           </div>
 
           <div className="bio-highlights">
