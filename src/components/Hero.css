@@ -1,3 +1,4 @@
+/* Hero Section Styles */
 .hero-section {
   min-height: 100vh;
   padding-top: 120px;
@@ -16,7 +17,29 @@
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 65% 40%, rgba(253, 111, 0, 0.12) 0%, transparent 70%);
+}
+
+/* Entrance Animations */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroPopIn {
+  0% {
+    opacity: 0;
+    transform: translate(1.5in, 35px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(1.5in, 0) scale(1);
+  }
 }
 
 .hero-container {
@@ -29,7 +52,7 @@
   z-index: 1;
 }
 
-/* Left Content Column */
+/* Left Column - Content */
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -37,6 +60,7 @@
   width: 580px;
   max-width: 580px;
   flex-shrink: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-greeting {
@@ -126,7 +150,7 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Right Column - 2 Circles 3D Pop-Out Technique (Moved 1 inch UP and calc(2in + 2cm) RIGHT) */
+/* Right Column - Avatar 3D Pop-Out Container */
 .hero-image-wrapper {
   position: relative;
   width: 540px;
@@ -136,28 +160,13 @@
   justify-content: center;
   align-items: flex-end;
   transform: translate(1.5in, 0);
+  animation: heroPopIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.hero-acid-right {
-  position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 680px;
-  height: 680px;
-  border-radius: 50%;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.85;
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 70%);
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 70%);
-}
-
-/* Curved Tourney Text along Left Side of Avatar Circle */
+/* Curved Tourney Text along Top of Avatar Circle */
 .hero-curved-text-svg {
   position: absolute;
-  bottom: -60px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: 580px;
@@ -192,8 +201,6 @@
 }
 
 /* 1st Circle: Front Masked Clipper Container (height = 640px) */
-/* Bottom rounded border (230px radius = 460px / 2) aligns EXACTLY with 2nd Circle's bottom layer */
-/* Top is taller (640px) so head part pops out above 2nd circle */
 .hero-avatar-clipper {
   position: absolute;
   bottom: 0;
@@ -217,7 +224,7 @@
   max-width: none;
   object-fit: contain;
   object-position: bottom center;
-  transform: translateY(0);
+  transform: translateX(-2cm);
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
 
@@ -237,6 +244,7 @@
     transform: scale(0.85);
     transform-origin: bottom center;
     margin-bottom: -40px;
+    animation: none;
   }
 }
 
@@ -277,5 +285,6 @@
     transform: scale(0.7);
     transform-origin: bottom center;
     margin-bottom: -70px;
+    animation: none;
   }
 }

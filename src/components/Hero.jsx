@@ -11,6 +11,34 @@ import './Hero.css';
 const Hero = ({ onOpenCV }) => {
   return (
     <section id="home" className="hero-section">
+      {/* Full Home Section Background AcidSquares Animation */}
+      <div className="hero-bg-acid">
+        <AcidSquares
+          color1="#000000"
+          color2="#853e0d"
+          color3="#392a1f"
+          detail="medium"
+          speed={0.7}
+          waveDepth={1}
+          zoom={1.3}
+          density={10.0}
+          glow={1.0}
+          exposure={2700}
+          spread={0.3}
+          stepSize={0.002}
+          colorShift={0}
+          contrast={1}
+          brightness={1.0}
+          opacity={0.9}
+          mouseInteraction={true}
+          mouseStrength={0.1}
+          mouseRadius={0.35}
+          blur={0}
+          grain={true}
+          grainIntensity={0.05}
+        />
+      </div>
+
       <div className="container hero-container">
         {/* Left Column - Content */}
         <div className="hero-content">
@@ -72,36 +100,8 @@ const Hero = ({ onOpenCV }) => {
           </div>
         </div>
 
-        {/* Right Column - Avatar Image with Right-Side AcidSquares Container */}
+        {/* Right Column - Avatar Image */}
         <div className="hero-image-wrapper">
-          {/* AcidSquares Effect restricted strictly to Right Side behind Avatar */}
-          <div className="hero-acid-right">
-            <AcidSquares
-              color1="#000000"
-              color2="#853e0d"
-              color3="#392a1f"
-              detail="medium"
-              speed={0.7}
-              waveDepth={1}
-              zoom={1.3}
-              density={10.0}
-              glow={1.0}
-              exposure={2700}
-              spread={0.3}
-              stepSize={0.002}
-              colorShift={0}
-              contrast={1}
-              brightness={1.0}
-              opacity={0.85}
-              mouseInteraction={true}
-              mouseStrength={0.1}
-              mouseRadius={0.35}
-              blur={0}
-              grain={true}
-              grainIntensity={0.05}
-            />
-          </div>
-
           {/* Curved Text Above Circle Header */}
           <svg className="hero-curved-text-svg" viewBox="0 0 580 580">
             <path id="curvePath" d="M 50, 290 A 240,240 0 0,1 530,290" fill="none" />
