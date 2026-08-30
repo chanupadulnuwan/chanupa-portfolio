@@ -59,48 +59,9 @@ export const softSkills = [
   "Critical Thinking & Problem Solving"
 ];
 
-export const projects = [
-  {
-    id: 1,
-    title: "Nestlé Insight – Demand Signal & Territory Implementation Platform",
-    category: "Full Stack",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    description: "Led an Agile team project building a enterprise mobile and web platform. Features field data collection, ordering, delivery tracking, forecasting exports, and demand-planning insights.",
-    tech: ["Flutter", "React", "NestJS", "PostgreSQL", "MySQL", "Agile"],
-    github: "https://github.com/chanupadulnuwan",
-    live: "https://chanupa.me"
-  },
-  {
-    id: 2,
-    title: "PayPatch — Expenses Sharing App",
-    category: "Mobile App",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
-    description: "Mobile application that helps friends, roommates, and families track shared expenses, calculate balances, and split bills effortlessly.",
-    tech: ["Flutter", "Dart", "React Native", "Firebase", "UI/UX"],
-    github: "https://github.com/chanupadulnuwan",
-    live: "https://chanupa.me"
-  },
-  {
-    id: 3,
-    title: "Bhathi’s World — Content Creator Website",
-    category: "Web App",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    description: "Developed a responsive content creator portfolio website showcasing media content, projects, and creator information with smooth UI animations.",
-    tech: ["React", "HTML5/CSS3", "JavaScript", "Responsive Design"],
-    github: "https://github.com/chanupadulnuwan",
-    live: "https://chanupa.me"
-  },
-  {
-    id: 4,
-    title: "Altrium Designathon 2026 UI/UX Showcase",
-    category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80",
-    description: "Award-winning UI/UX prototype created during the Altrium Designathon 2026 (Runners Up), highlighting modern glassmorphism, accessibility, and user flows.",
-    tech: ["Figma", "Prototyping", "UX Research", "Design System"],
-    github: "https://github.com/chanupadulnuwan",
-    live: "https://chanupa.me"
-  }
-];
+import { fullProjectsData } from './projectsData';
+
+export const projects = fullProjectsData;
 
 export const education = [
   {

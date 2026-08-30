@@ -1,0 +1,5 @@
+Phoenix Hub - game store web app using basic HTML CSS and javascript one of the 1st project as a computer science student  
+here is the GitHub link
+https://github.com/chanupadulnuwan/phoenixhub
+hosted link
+https://chanupadulnuwan.github.io/phoenixhub/

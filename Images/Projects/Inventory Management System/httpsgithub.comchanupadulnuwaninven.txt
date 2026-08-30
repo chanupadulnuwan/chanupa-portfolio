@@ -1,0 +1,19 @@
+https://github.com/chanupadulnuwan/inventory_management_system : git hub inventory management system
+
+use this paragraph and improvice it and add few paragraphs , : Looking back at one of the first major projects I worked on during my 1st year at university with my teammate Gayantha akash, Hemsadi Perera, and Amien Sainudeen
+At the time, C# and OOP concepts were completely new to us, so even though this started as a “basic CRUD project,” it became one of the projects where we learned the real foundation of software development.
+We built a desktop-based Inventory Management System using C# WinForms, .NET 8, and MySQL. Through this project, we explored concepts like object-oriented programming, database design, desktop application architecture, and how real business workflows can be automated through software.
+Some of the features we implemented included:
+• User authentication and role-based access
+• Product and supplier management
+• Stock tracking and sales processing
+• Purchase order handling
+• Reporting and analytics dashboards
+• CRUD operations with parameterized SQL queries
+• Real-time data presentation using DataGridView
+We also structured the application using an MVC-inspired approach with separate Views, Models, and Controllers to keep the project organized and maintainable.
+What makes this project special to me is not how advanced it was, but how much it taught us as beginners. It was one of the projects that helped me truly understand the basics of C#, OOP principles, and desktop application development.
+Grateful for the experience and teamwork, and it’s interesting to look back now and see how much we’ve grown since then 🚀
+#CSharp #DotNet #WinForms #MySQL #OOP #SoftwareDevelopment #InventoryManagement #StudentProject hashtag#LearningJourney
+
+add this video as well : <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463624105397805056?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>

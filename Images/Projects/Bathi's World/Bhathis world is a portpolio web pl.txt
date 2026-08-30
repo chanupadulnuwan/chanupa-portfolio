@@ -1,0 +1,7 @@
+Bhathis world is a portpolio web platform i create for social media content creator Bhathiya maneth , in 2006 , use react and hosted in vercel , desing uI usigi figma and ispired from magical theme cz it is match to his vide: improvice this to few para graphs and add
+
+GitHub
+https://github.com/chanupadulnuwan/-bhathis-world
+
+hosted in
+https://www.bhathisworld.com/

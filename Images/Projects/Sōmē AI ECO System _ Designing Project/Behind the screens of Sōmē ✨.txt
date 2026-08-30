@@ -1,0 +1,14 @@
+Behind the screens of Sōmē ✨
+
+After becoming Runners-up at Designathon 2026, organized by APIIT and Altrium, I wanted to share a closer look at how we built our concept, from the Figma workspace to the final app experience.
+
+Our domain was AI-powered digital life ecosystems. We focused on a problem many people face today: digital life is becoming fragmented across work, study, entertainment, wellness, finance, and daily routines. This creates cognitive overload, stress, distraction, and constant context switching.
+To solve this, we designed Sōmē — an emotionally intelligent and context-aware ecosystem that adapts based on the user’s mood, time, workload, environment, and daily behavior. Instead of forcing users through more notifications, Sōmē gently adjusts the experience to help them feel calmer, more focused, and more balanced.
+A big part of our design direction was the iOS-inspired minimal interface. We used SF Pro Rounded, soft spacing, a calm color palette, and subtle animations to create an experience that feels familiar, comfortable, and easy to stay with. The color system was designed to adapt with emotions and time, while still keeping the interface clean and consistent.
+Our team leader Sihas Senevirathne had a strong vision for minimalism and emotional design. His direction helped shape Sōmē into something that feels simple, calm, and meaningful instead of visually overloaded. Also, a special appreciation to Our team member Yelani Samarathunga for the voice dubbing in the video, which helped bring the product story to life.
+For us, Sōmē is not just an app screen. It is a concept for how digital ecosystems could work in the next few years — more adaptive, more human, and more supportive of everyday life.
+More details and the full demo are in the video below. 👇
+
+explain more this in few oaragrpahs and this as a video - <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7464584910456983552?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+
+add GitHub link as well : https://www.figma.com/design/kHDTmbYBveTgbq99zpUHAy/APIIT-Designathon---05-Targaryen?node-id=2008-771&p=f&t=ITyewTr2bfXvzYF2-0

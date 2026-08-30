@@ -1,0 +1,33 @@
+🚀 Proud to share one of the most valuable academic projects I've completed so far.
+
+As part of our Level 5 Commercial Computing module, our team developed Nestlé Insight — a mobile and web-based demand-signal platform designed to improve visibility in traditional retail supply chains.
+
+Many small retailers operate without POS systems, making it difficult to capture real sales and demand signals accurately. This can result in poor forecasting, stockouts, and overstocking.
+
+📱 Mobile App
+Designed for Sales Representatives, Shop Owners, and Distributors to manage orders, deliveries, outlet registration, route planning, returns, field reports, and shop-level data collection.
+
+🌐 Web Portal
+Designed for Admins, Warehouse Managers, and Demand Planners to manage users, monitor operations, access dashboards, reports, forecasting tools, and demand-planning exports.
+
+📊 A key feature was our Demand Forecast Export Generator, which transformed shop-level operational data into forecasting-ready exports such as sales, inventory, orders, and master data—helping convert traditional retail activity into valuable demand signals.
+
+⚙️ Tech Stack
+Flutter • React • NestJS • PostgreSQL/MySQL • Figma • GitHub • Jira
+
+🧩 My Role
+I served as the project lead/coordinator while contributing across multiple Agile roles, including Developer, Business Analyst, QA Support, and Sprint Coordination. I was involved in planning, system design, documentation, development support, testing, and presentations.
+
+✅ Key Learning
+This project strengthened my understanding of Agile practices, teamwork, leadership, communication, and how technology can solve real business challenges.
+
+A big thank you to my team members Kanish Ashwinth Gangatharan Amien Sainudeen Savinu Guruge and Dr. Tharanga Peiris for their support throughout this journey.
+: take an idea from this and explain more and add a few paragraps to this
+
+GitHub 
+https://github.com/chanupadulnuwan/NestleInsight-AdminWeb
+https://github.com/chanupadulnuwan/NestleInsight-backend
+https://github.com/chanupadulnuwan/NestleInsight-mobile
+
+hosted
+https://nestle-insight-admin-web.vercel.app/

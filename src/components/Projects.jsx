@@ -1,27 +1,57 @@
-import React, { useState } from 'react';
-import { ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ExternalLink, ArrowRight, Eye } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
-import { projects } from '../data/portfolioData';
+import { fullProjectsData } from '../data/projectsData';
+import ProjectDetailModal from './ProjectDetailModal';
 import './Projects.css';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ['All', 'Web App', 'Mobile App', 'UI/UX Design'];
+  useEffect(() => {
+    // Check if URL anchor specifies a project (e.g. #project/nestle-insight)
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#project/')) {
+        const projectId = hash.replace('#project/', '');
+        const target = fullProjectsData.find((p) => p.id === projectId);
+        if (target) setSelectedProject(target);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const categories = ['All', 'Full Stack', 'Mobile App', 'Web App', 'UI/UX Design', 'Desktop App'];
 
   const filteredProjects = activeFilter === 'All'
-    ? projects
-    : projects.filter((p) => p.category === activeFilter);
+    ? fullProjectsData
+    : fullProjectsData.filter((p) => p.category === activeFilter);
+
+  const openProjectDetails = (proj) => {
+    setSelectedProject(proj);
+    window.history.pushState(null, '', `#project/${proj.id}`);
+  };
+
+  const closeProjectDetails = () => {
+    setSelectedProject(null);
+    if (window.location.hash.startsWith('#project/')) {
+      window.history.pushState(null, '', '#projects');
+    }
+  };
 
   return (
     <section id="projects" className="section-padding projects-section">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">My Portfolio</span>
+          <span className="section-subtitle">Real Work & Case Studies</span>
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-desc">
-            Explore some of my recent web applications, mobile apps, and UI/UX design prototypes.
+            Explore my real projects with in-depth development stories, technical breakdowns, screenshots, and live links.
           </p>
         </div>
 
@@ -41,58 +71,92 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="projects-grid">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="project-card">
+            <div
+              key={project.id}
+              className="project-card"
+              onClick={() => openProjectDetails(project)}
+            >
               <div className="project-image-wrapper">
                 <img
-                  src={project.image}
+                  src={project.coverImage}
                   alt={project.title}
                   className="project-image"
                   loading="lazy"
                 />
                 <span className="project-category-badge">{project.category}</span>
+                <div className="project-overlay-btn">
+                  <Eye size={18} />
+                  <span>Read Full Story</span>
+                </div>
               </div>
 
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>
-                <p className="project-desc">{project.description}</p>
+                <p className="project-desc">{project.shortDesc}</p>
 
                 {/* Tech Stack Pills */}
                 <div className="project-tech-stack">
-                  {project.tech.map((t, idx) => (
+                  {project.tech.slice(0, 4).map((t, idx) => (
                     <span key={idx} className="tech-pill">
                       {t}
                     </span>
                   ))}
+                  {project.tech.length > 4 && (
+                    <span className="tech-pill more">+{project.tech.length - 4} more</span>
+                  )}
                 </div>
 
-                {/* Card Links */}
+                {/* Card Action Button Bar */}
                 <div className="project-links">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-link-btn outline"
-                    title="View GitHub Repository"
-                  >
-                    <GithubIcon size={18} />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
                     className="project-link-btn primary"
-                    title="Live Demo"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openProjectDetails(project);
+                    }}
                   >
-                    <ExternalLink size={18} />
-                    <span>Live Preview</span>
-                  </a>
+                    <span>View Project Details</span>
+                    <ArrowRight size={16} />
+                  </button>
+
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link-btn outline"
+                      onClick={(e) => e.stopPropagation()}
+                      title="Live Demo"
+                    >
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+                  {project.githubLinks && project.githubLinks.length > 0 && (
+                    <a
+                      href={project.githubLinks[0].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link-btn outline"
+                      onClick={(e) => e.stopPropagation()}
+                      title="GitHub Repository"
+                    >
+                      <GithubIcon size={16} />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Project Details Modal View */}
+      {selectedProject && (
+        <ProjectDetailModal
+          project={selectedProject}
+          onClose={closeProjectDetails}
+        />
+      )}
     </section>
   );
 };
