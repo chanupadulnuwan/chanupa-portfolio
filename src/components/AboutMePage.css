@@ -1,39 +1,14 @@
-/* Dedicated About Me Page Styles */
 .about-me-page {
   min-height: 100vh;
   background-color: var(--color-bg, #0d0d0d);
   color: var(--color-text-main, #ffffff);
+  padding-top: 130px;
   padding-bottom: 80px;
-}
-
-/* Sticky Header Bar */
-.about-page-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(13, 13, 13, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px 0;
-}
-
-.motto-badge {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-primary, #FD6F00);
-  background: rgba(253, 111, 0, 0.1);
-  border: 1px solid rgba(253, 111, 0, 0.25);
-  padding: 6px 16px;
-  border-radius: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
 }
 
 /* Page Intro Header */
 .about-page-main {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .about-intro-header {
