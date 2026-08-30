@@ -304,12 +304,12 @@
     display: none !important;
   }
 
-  /* Mobile-Only: Clean avatar sizing & layout with ZERO overlap */
+  /* Mobile-Only: Slightly bigger centered avatar image */
   .hero-image-wrapper {
-    width: 260px;
-    height: 260px;
+    width: 295px;
+    height: 295px;
     transform: none;
-    margin: 24px auto 10px;
+    margin: 24px auto 16px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -317,15 +317,15 @@
   }
 
   .hero-circle-bg {
-    width: 260px;
-    height: 260px;
+    width: 295px;
+    height: 295px;
     transform: none;
     inset: 0;
   }
 
   .hero-avatar-clipper {
-    width: 260px;
-    height: 260px;
+    width: 295px;
+    height: 295px;
     border-radius: 50%;
     transform: none;
     overflow: hidden;
@@ -370,16 +370,16 @@
     margin-bottom: 12px;
   }
 
-  /* Mobile-Only: Clean avatar sizing for small screens */
+  /* Mobile-Only: Centered avatar size for small screens */
   .hero-image-wrapper {
-    width: 220px;
-    height: 220px;
-    margin: 18px auto 10px;
+    width: 265px;
+    height: 265px;
+    margin: 20px auto 12px;
   }
 
   .hero-circle-bg,
   .hero-avatar-clipper {
-    width: 220px;
-    height: 220px;
+    width: 265px;
+    height: 265px;
   }
 }
