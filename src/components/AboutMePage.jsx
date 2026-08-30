@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, GraduationCap, Code, Sparkles, X, ZoomIn, Briefcase, Award } from 'lucide-react';
+import { ArrowLeft, Award, Music, Code, Compass, GraduationCap, Briefcase, Sparkles, X, ZoomIn } from 'lucide-react';
 import meImg from '../../Images/me.png';
 
 // Certification images imports
@@ -102,118 +102,137 @@ const AboutMePage = ({ onBackToHome }) => {
           </div>
         </div>
 
-        {/* Structured Story Chapters */}
-        <div className="story-chapters-container">
-          <h2 className="chapters-section-title">The Chapters of My Journey</h2>
-
-          {/* Chapter 1 */}
-          <div className="story-chapter-card">
-            <div className="chapter-number">01</div>
-            <div className="chapter-content">
-              <h3>Early Education & Foundations at Siridhamma College</h3>
-              <p>
-                My educational journey began at <strong>Siridhamma College, Galle</strong>, where I studied from Grade 1 through my Advanced Levels. These formative years cultivated my core work ethic, discipline, and interest in technology and analytical thinking.
-              </p>
-              <p>
-                During school, I actively participated in student societies including the <strong>IT Society</strong> and <strong>Astronomy Society</strong>, developing teamwork, organization, and problem-solving skills that laid the foundation for my software engineering path.
-              </p>
-            </div>
+        {/* Chapter 1: Early Education & Music */}
+        <div className="story-chapter-card">
+          <div className="chapter-icon-wrapper">
+            <Music size={24} color="#FD6F00" />
           </div>
-
-          {/* Chapter 2 */}
-          <div className="story-chapter-card">
-            <div className="chapter-number">02</div>
-            <div className="chapter-content">
-              <h3>Academic Excellence: Pearson Level 3 Diploma Distinction</h3>
-              <p>
-                In 2024, I completed the <strong>Pearson Level 3 Diploma in IT at Horizon Campus</strong>, graduating with <strong>Distinction</strong>. This intensive academic program solidified my technical knowledge across programming fundamentals, database design, software engineering methodologies, and web technology stacks.
-              </p>
-            </div>
-          </div>
-
-          {/* Chapter 3 */}
-          <div className="story-chapter-card">
-            <div className="chapter-number">03</div>
-            <div className="chapter-content">
-              <h3>Higher Education: Staffordshire University (APIIT Sri Lanka)</h3>
-              <p>
-                Currently, I am pursuing my <strong>BSc (Hons) in Computer Science at Staffordshire University through APIIT Sri Lanka</strong>. University life has expanded my horizons, allowing me to dive deep into Full-Stack Web Architecture (React, NestJS), Mobile App Development (Flutter, React Native), and Enterprise Relational Databases (PostgreSQL, MySQL).
-              </p>
-            </div>
-          </div>
-
-          {/* Chapter 4 */}
-          <div className="story-chapter-card">
-            <div className="chapter-number">04</div>
-            <div className="chapter-content">
-              <h3>Designathon Runner-Up & Commercial Software Engineering</h3>
-              <p>
-                In 2026, my team secured <strong>2nd Place (Runners Up) in the prestigious Altrium Designathon</strong>, designing Sōmē AI — a multi-platform mobile application and web dashboard ecosystem for smart device management.
-              </p>
-              <p>
-                Simultaneously, I serve as a <strong>Media Assistant & LMS Support Specialist at Brightway Institute</strong> (2025–present) and lead the <strong>Galle Fort Library Digitization Project</strong> (2026–present), building custom web search systems to digitize 4,000+ rare historical volumes.
-              </p>
-            </div>
-          </div>
-
-          {/* Chapter 5 */}
-          <div className="story-chapter-card highlight-chapter">
-            <div className="chapter-number">05</div>
-            <div className="chapter-content">
-              <h3>Bhathi's World & Ongoing Innovations</h3>
-              <p>
-                I recently engineered the official web platform for popular content creator <strong>Bhathiya Maneth Ranaweera (Bhathi's World)</strong>, building a high-performance content engine to showcase his media projects and social reach.
-              </p>
-              <p>
-                Driven by <em>Ascende Superius</em>, I am continually pushing boundaries in mobile engineering, UI/UX prototyping, and scalable backend architecture.
-              </p>
-            </div>
+          <div className="chapter-content">
+            <h3 className="chapter-title">Early Education & Music Leadership at Siridhamma College</h3>
+            <p className="chapter-paragraph">
+              I began my education at <strong>Siridhamma College, Galle</strong>, where I studied from Grade 1 through my Advanced Levels. During my school years, music became an important part of my life. I was actively involved in the school orchestra and, in 2021, had the opportunity to become its leader.
+            </p>
+            <p className="chapter-paragraph">
+              As a member and leader of the orchestra, I participated in <strong>two All-Island competitions</strong>, achieving victories and multiple other awards and recognitions. These experiences taught me valuable lessons about leadership, teamwork, discipline, and performing under pressure.
+            </p>
+            <p className="chapter-paragraph">
+              Alongside music, I was strongly involved in my school's <strong>IT Society and Astronomy Society</strong>. Through these societies, I participated in competitions and activities that allowed me to explore technology, science, and problem-solving from different perspectives—building the initial foundation for my growing passion in tech.
+            </p>
           </div>
         </div>
 
-        {/* Certifications Showcase Gallery */}
-        <div className="certifications-gallery-section">
+        {/* Chapter 2: The Transition to IT & Higher Education */}
+        <div className="story-chapter-card">
+          <div className="chapter-icon-wrapper">
+            <GraduationCap size={24} color="#FD6F00" />
+          </div>
+          <div className="chapter-content">
+            <h3 className="chapter-title">Horizon Campus Diploma & Computer Science at APIIT</h3>
+            <p className="chapter-paragraph">
+              After completing my O/Ls, my interests shifted strongly toward Information Technology. I joined <strong>Horizon Campus</strong> to pursue a <strong>Pearson Level 3 Diploma in IT</strong>. What initially began as an area of interest quickly evolved into my core career trajectory. In <strong>2024, I completed my diploma with Distinction</strong> and continued my education by entering the <strong>BSc (Hons) Computer Science degree programme at APIIT Sri Lanka (Staffordshire University)</strong>.
+            </p>
+            <p className="chapter-paragraph">
+              University opened the door to a wide world of technology. Throughout my studies, I have explored areas including <strong>software engineering, full-stack web development, networking, mobile app development, databases, and data science</strong>.
+            </p>
+            <p className="chapter-paragraph">
+              I have represented my university in several <strong>hackathons and competitions</strong>, gaining invaluable experience in rapid prototyping, collaborative problem-solving, and building software solutions under tight deadlines.
+            </p>
+          </div>
+        </div>
+
+        {/* Chapter 3: Designathon Victory & UI/UX Philosophy */}
+        <div className="story-chapter-card">
+          <div className="chapter-icon-wrapper">
+            <Award size={24} color="#FD6F00" />
+          </div>
+          <div className="chapter-content">
+            <h3 className="chapter-title">Altrium Designathon 2026 & UI/UX Creative Vision</h3>
+            <p className="chapter-paragraph">
+              One of my major highlights was the <strong>2026 Altrium Designathon</strong>, where my team achieved <strong>2nd Place (Runners-Up)</strong> with our Sōmē AI life ecosystem design. Experiences like this have strengthened my confidence in approaching unfamiliar problems and turning creative concepts into functional products.
+            </p>
+            <p className="chapter-paragraph">
+              Among the different areas I have explored, <strong>UI/UX design is one of my absolute favourite fields</strong>. I believe one of my greatest strengths is <strong>creativity</strong>. I enjoy thinking beyond the obvious solution, experimenting with ideas, and finding ways to make technology not only functional, but also engaging, intuitive, and human-centered. For me, the most exciting part of technology is where <strong>creativity and technical thinking meet</strong>.
+            </p>
+          </div>
+        </div>
+
+        {/* Chapter 4: Real-World Experience & Personal Work */}
+        <div className="story-chapter-card">
+          <div className="chapter-icon-wrapper">
+            <Briefcase size={24} color="#FD6F00" />
+          </div>
+          <div className="chapter-content">
+            <h3 className="chapter-title">Real-World Projects & Digital Media Leadership</h3>
+            <p className="chapter-paragraph">
+              In <strong>2025, I began working as a Media Assistant at Brightway Institute</strong>, developing digital media assets and managing course media while continuing my studies in technology.
+            </p>
+            <p className="chapter-paragraph">
+              Currently, in <strong>2026</strong>, I am actively involved in the <strong>Galle Fort Library Digitization Project</strong>, contributing to preserving Sri Lanka’s oldest public library by cataloging and digitizing over 4,000 rare historical books into a modern digital platform.
+            </p>
+            <p className="chapter-paragraph">
+              I also combined my technical and creative skills through projects like <strong>Bhathi's World</strong> — the official web platform for social media content creator <strong>Bhathiya Maneth Ranaweera</strong>.
+            </p>
+          </div>
+        </div>
+
+        {/* Chapter 5: Ascende Superius Conclusion */}
+        <div className="story-chapter-card motto-conclusion-card">
+          <div className="chapter-icon-wrapper">
+            <Compass size={24} color="#FD6F00" />
+          </div>
+          <div className="chapter-content">
+            <h3 className="chapter-title">Ascende Superius — Seek Higher Things</h3>
+            <p className="chapter-paragraph">
+              Looking back, my journey has taken me through many different worlds—from <strong>music and orchestra leadership to software engineering, UI/UX design, mobile development, and digital media</strong>. Each experience has contributed to the engineer and designer I am today. I see these interests as complementary skills that allow me to approach technology from a more holistic, creative perspective.
+            </p>
+          </div>
+        </div>
+
+        {/* Certifications Showcase Section */}
+        <section className="certifications-showcase-section">
           <div className="cert-section-header">
-            <Award size={28} color="#FD6F00" />
-            <div>
-              <h2>Certifications & Achievements Showcase</h2>
-              <p>Official verified certificates and course achievements. Click any certificate to expand in high resolution.</p>
-            </div>
+            <span className="section-subtitle">Verified Qualifications</span>
+            <h2 className="cert-section-title">Certifications & Achievements Gallery</h2>
+            <p className="cert-section-desc">
+              Explore my verified academic certificates, LinkedIn Learning qualifications, and competition recognitions. Click any certificate to expand.
+            </p>
           </div>
 
-          <div className="cert-cards-grid">
+          <div className="certifications-grid">
             {certificationsData.map((cert) => (
-              <div key={cert.id} className="cert-gallery-card" onClick={() => setSelectedCert(cert)}>
-                <div className="cert-img-container">
-                  <img src={cert.image} alt={cert.title} className="cert-thumbnail-img" />
-                  <div className="cert-zoom-overlay">
-                    <ZoomIn size={24} color="#ffffff" />
-                    <span>Click to Zoom</span>
+              <div
+                key={cert.id}
+                className="cert-card"
+                onClick={() => setSelectedCert(cert)}
+              >
+                <div className="cert-img-wrapper">
+                  <img src={cert.image} alt={cert.title} className="cert-img" loading="lazy" />
+                  <div className="cert-hover-overlay">
+                    <ZoomIn size={22} />
+                    <span>Expand Certificate</span>
                   </div>
                 </div>
-                <div className="cert-card-info">
-                  <h4>{cert.title}</h4>
-                  <span className="cert-issuer-badge">{cert.issuer}</span>
+                <div className="cert-card-body">
+                  <h4 className="cert-title">{cert.title}</h4>
+                  <span className="cert-issuer">{cert.issuer}</span>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
       </main>
 
-      {/* High-Resolution Modal Zoom Lightbox */}
+      {/* Lightbox Modal for Certificate Expansion */}
       {selectedCert && (
-        <div className="cert-modal-backdrop" onClick={() => setSelectedCert(null)}>
-          <div className="cert-modal-dialog" onClick={(e) => e.stopPropagation()}>
-            <button className="cert-modal-close" onClick={() => setSelectedCert(null)}>
-              <X size={24} color="#ffffff" />
+        <div className="cert-lightbox-overlay" onClick={() => setSelectedCert(null)}>
+          <div className="cert-lightbox-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="cert-lightbox-close" onClick={() => setSelectedCert(null)}>
+              <X size={26} />
             </button>
-            <div className="cert-modal-header">
+            <img src={selectedCert.image} alt={selectedCert.title} className="expanded-cert-img" />
+            <div className="cert-lightbox-caption">
               <h3>{selectedCert.title}</h3>
-              <span className="cert-modal-issuer">{selectedCert.issuer}</span>
-            </div>
-            <div className="cert-modal-body">
-              <img src={selectedCert.image} alt={selectedCert.title} className="cert-full-img" />
+              <p>{selectedCert.issuer}</p>
             </div>
           </div>
         </div>
