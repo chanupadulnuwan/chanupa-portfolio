@@ -96,7 +96,7 @@ const AboutMePage = ({ onBackToHome }) => {
               </div>
               <div className="highlight-pill">
                 <Briefcase size={16} color="#FD6F00" />
-                <span>Media Assistant & Digitalization Engineer</span>
+                <span>Media Assistant - Brightway Institute</span>
               </div>
             </div>
           </div>
