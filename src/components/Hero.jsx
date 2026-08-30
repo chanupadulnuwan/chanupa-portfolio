@@ -3,7 +3,7 @@ import { Download } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon, MailIcon, GithubIcon } from './SocialIcons';
 import TypingText from './TypingText';
 import SpecularButton from './SpecularButton';
-import HeroBackgroundAnimation from './HeroBackgroundAnimation';
+import AcidSquares from './AcidSquares';
 import { personalDetails } from '../data/portfolioData';
 import meImg from '../../Images/me.png';
 import './Hero.css';
@@ -11,9 +11,6 @@ import './Hero.css';
 const Hero = ({ onOpenCV }) => {
   return (
     <section id="home" className="hero-section">
-      {/* Dynamic Animated Matrix Canvas & Subtle Right Orange Touch */}
-      <HeroBackgroundAnimation />
-
       <div className="container hero-container">
         {/* Left Column - Content */}
         <div className="hero-content">
@@ -24,51 +21,25 @@ const Hero = ({ onOpenCV }) => {
             <TypingText roles={personalDetails.roles} />
           </div>
 
-          {/* Social Icons Row */}
+          {/* Social Icons */}
           <div className="hero-socials">
-            <a
-              href={personalDetails.socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-btn"
-              aria-label="Instagram"
-              title="Instagram"
-            >
+            <a href={personalDetails.socials.instagram} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="Instagram">
               <InstagramIcon size={20} />
             </a>
-            <a
-              href={personalDetails.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-btn"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-            >
+            <a href={personalDetails.socials.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="LinkedIn">
               <LinkedinIcon size={20} />
             </a>
-            <a
-              href={personalDetails.socials.email}
-              className="social-icon-btn"
-              aria-label="Email"
-              title="Email"
-            >
+            <a href={personalDetails.socials.email} className="social-icon-btn" aria-label="Email">
               <MailIcon size={20} />
             </a>
-            <a
-              href={personalDetails.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon-btn"
-              aria-label="GitHub"
-              title="GitHub"
-            >
+            <a href={personalDetails.socials.github} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="GitHub">
               <GithubIcon size={20} />
             </a>
           </div>
 
           {/* Action Buttons */}
           <div className="hero-actions">
-            <a href="#contact" className="btn-primary">
+            <a href="#contact" className="btn-primary hire-btn">
               Hire Me
             </a>
             <SpecularButton
@@ -80,13 +51,6 @@ const Hero = ({ onOpenCV }) => {
               textColor="#FD6F00"
               lineColor="#FD6F00"
               baseColor="#444444"
-              intensity={1.2}
-              shineSize={14}
-              shineFade={45}
-              thickness={1.5}
-              speed={0.4}
-              followMouse
-              proximity={250}
               onClick={onOpenCV}
             >
               <Download size={18} />
@@ -94,42 +58,66 @@ const Hero = ({ onOpenCV }) => {
             </SpecularButton>
           </div>
 
-          {/* Stats Bar Component */}
+          {/* Stats Bar */}
           <div className="hero-stats-card">
             {personalDetails.stats.map((stat, idx) => (
               <React.Fragment key={idx}>
-                {idx > 0 && <div className="stats-divider" />}
                 <div className="stat-item">
                   <span className="stat-number">{stat.value}</span>
                   <span className="stat-label">{stat.label}</span>
                 </div>
+                {idx < personalDetails.stats.length - 1 && <div className="stats-divider" />}
               </React.Fragment>
             ))}
           </div>
         </div>
 
-        {/* Right Column - 3D Pop-Out Avatar Effect (2 Circles technique) */}
+        {/* Right Column - Avatar Image with Right-Side AcidSquares Container */}
         <div className="hero-image-wrapper">
-          {/* Curved Text along left side of circle */}
+          {/* AcidSquares Effect restricted strictly to Right Side behind Avatar */}
+          <div className="hero-acid-right">
+            <AcidSquares
+              color1="#000000"
+              color2="#853e0d"
+              color3="#392a1f"
+              detail="medium"
+              speed={0.7}
+              waveDepth={1}
+              zoom={1.3}
+              density={10.0}
+              glow={1.0}
+              exposure={2700}
+              spread={0.3}
+              stepSize={0.002}
+              colorShift={0}
+              contrast={1}
+              brightness={1.0}
+              opacity={0.85}
+              mouseInteraction={true}
+              mouseStrength={0.1}
+              mouseRadius={0.35}
+              blur={0}
+              grain={true}
+              grainIntensity={0.05}
+            />
+          </div>
+
+          {/* Curved Text Above Circle Header */}
           <svg className="hero-curved-text-svg" viewBox="0 0 580 580">
-            <path id="seekHigherPath" d="M 70,445 A 268,268 0 0,1 405,45" fill="none" />
+            <path id="curvePath" d="M 50, 290 A 240,240 0 0,1 530,290" fill="none" />
             <text className="curved-text">
-              <textPath href="#seekHigherPath" startOffset="0%">
+              <textPath href="#curvePath" startOffset="50%" textAnchor="middle">
                 Seek Higher Things
               </textPath>
             </text>
           </svg>
 
-          {/* 2nd Circle: Background Grey Circle with reduced opacity */}
+          {/* Circle Frame Background */}
           <div className="hero-circle-bg" />
 
-          {/* 1st Circle: Masked Image Clipper (bottom matches 2nd circle, top extends higher for head pop-out) */}
+          {/* Avatar Image Container */}
           <div className="hero-avatar-clipper">
-            <img
-              src={meImg}
-              alt="Chanupa Dulnuwan Profile Photo"
-              className="hero-avatar-img"
-            />
+            <img src={meImg} alt="Chanupa Dulnuwan" className="hero-avatar-img" />
           </div>
         </div>
       </div>

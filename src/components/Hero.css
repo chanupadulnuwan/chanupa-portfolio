@@ -138,6 +138,22 @@
   transform: translate(1.5in, 0);
 }
 
+.hero-acid-right {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 680px;
+  height: 680px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 70%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 70%);
+}
+
 /* Curved Tourney Text along Left Side of Avatar Circle */
 .hero-curved-text-svg {
   position: absolute;
