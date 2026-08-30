@@ -429,9 +429,8 @@ const AcidSquares = ({
     const container = containerRef.current;
     if (!container) return;
     const ctx = ctxMap.get(container);
-    if (!ctx) return;
-    const { program } = ctx;
-    const u = program.uniforms;
+    if (!ctx || !ctx.program || !ctx.program.uniforms) return;
+    const u = ctx.program.uniforms;
 
     u.uSpeed.value = speed;
     u.uWaveDepth.value = waveDepth;
